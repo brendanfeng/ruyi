@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import configureStore from './store/store.js';
+
+import configureStore from './store/store';
+import Root from './components/root';
 
 // START_TESTING!!!!
 let store = configureStore();
@@ -10,5 +12,5 @@ window.dispatch = store.dispatch;
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
-  ReactDOM.render(<h1>RUYI</h1>, root);
+  ReactDOM.render(<Root store={ store } />, root);
 });
