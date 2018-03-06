@@ -1,0 +1,31 @@
+.login-form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.login-alt-form {
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+
+.login-title {
+  display: block;
+  text-align: center;
+  text-transform: capitalize;
+  margin-top: 10px;
+}
+
+.login-form {
+  list-style: none;
+}
+
+.login-form li {
+  margin-top: 10px;
+  padding: 10px;
+  
+}
+
+.session-submit {
+  font-size: 50px;
+  text-transform: capitalize;
+}
