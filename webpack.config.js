@@ -4,7 +4,7 @@ module.exports = {
   context: __dirname,
   entry: "./frontend/ruyi.jsx",
   output: {
-    path: path.resolve(__dirname, "app", "assets", "javascript"),
+    path: path.resolve(__dirname, "app", "assets", "javascripts"),
     filename: "bundle.js"
   },
   module: {
