@@ -16,6 +16,26 @@
   padding-bottom: 1.2rem;
 }
 
+.header-link:nth-child(2n) {
+  margin-left: 1.2rem;
+}
+
+.header-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.search-bar i {
+  margin-left: 0.1rem;
+  vertical-align: bottom;
+  font-size: 20px;
+}
+
+.header-link:hover, .search-bar:hover {
+  color: #009e74;
+  cursor: pointer;
+}
+
 .logo {
   font-family: Sniglet, fantasy;
   font-size: 24px;
