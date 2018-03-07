@@ -1,10 +1,18 @@
 .login-form-container {
+  font-family: Yantramanav, sans-serif;
   display: flex;
   justify-content: center;
 }
 
+.login-form-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .login-alt-form {
   text-align: center;
+  font-size: 18px;
   border-bottom: 1px solid black;
 }
 
@@ -12,6 +20,7 @@
   display: block;
   text-align: center;
   text-transform: capitalize;
+  font-size: 28px;
   margin-top: 10px;
 }
 
@@ -19,13 +28,25 @@
   list-style: none;
 }
 
+.login-input {
+  height: 24px;
+  border-radius: 10%;
+  margin-left: 10px;
+  font-size: 13px;
+  box-shadow: 1px 1px #ccc;
+}
+
 .login-form li {
   margin-top: 10px;
   padding: 10px;
-  
+  text-align: center;
+  height: 20px;
 }
 
 .session-submit {
-  font-size: 50px;
+  height: 40px;
+  margin-top: 10px;
+  font-size: 18px;
   text-transform: capitalize;
+  padding: 10px 5px;
 }
