@@ -1,4 +1,7 @@
 class Api::UsersController < ApplicationController
+
+before_action :ensure_logged_out, only:[:create]
+
   def create
     @user = User.new(user_params)
 

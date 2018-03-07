@@ -29,4 +29,10 @@ class ApplicationController < ActionController::Base
       render json: { session: ['Please Log In!']}, status: 401
     end
   end
+
+  def ensure_logged_out
+    if current_user
+      render json: { session: ['You are already logged in!']}, status: 401
+    end
+  end
 end
