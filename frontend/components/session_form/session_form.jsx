@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -20,6 +20,12 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
+    this.props.processForm(user);
+  }
+
+  guestLogin(e) {
+    e.preventDefault();
+    const user = Object.assign({}, {username: "user"});
     this.props.processForm(user);
   }
 
@@ -57,6 +63,10 @@ class SessionForm extends React.Component {
           <button type="submit" className="session-submit">
             { this.props.buttonText }
           </button>
+          <div className="login-form-alt">
+            Don't have an account? Try the
+            <Link to="/" className="login-form-demo"> Demo Login</Link>
+          </div>
         </form>
       </div>
     );

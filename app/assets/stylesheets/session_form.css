@@ -1,5 +1,6 @@
 .login-form-container {
   font-family: Yantramanav, sans-serif;
+  color: #282828;
   display: flex;
   justify-content: center;
   background-color: #f0f0f0;
@@ -25,13 +26,13 @@
 }
 
 .login-form-alt a {
-  color: blue;
+  color: #009e74;
   text-decoration: none;
   font-weight: 700;
 }
 
 .login-form-alt a:hover {
-  color: black;
+  color: #282828;
 }
 
 .login-form-title {
@@ -60,6 +61,19 @@
   font-weight: 300;
   color: #ffffff;
 }
+
+/* .login-form-demo {
+  text-decoration: none;
+  color: #009e74;
+  font-size: 16;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 10px;
+} */
+
+/* .login-form-demo:hover {
+  color: #282828;
+} */
 
 .errors-list {
   color: red;
