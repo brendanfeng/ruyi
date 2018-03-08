@@ -35,6 +35,12 @@ class User < ApplicationRecord
     self.password_digest = BCrypt::Password.create(password)
   end
 
+  has_many :created_projects,
+    primary_key: :id,
+    foreign_key: :creator_id,
+    class_name: "Projects",
+    dependent: :destroy
+
   private
 
   def ensure_session_token

@@ -24,15 +24,21 @@ class ApplicationController < ActionController::Base
     @current_user = nil
   end
 
+  def already_rendered
+    @already_rendered ||= false
+  end
+
   def ensure_logged_in
     unless current_user
       render json: { session: ['Please Log In!']}, status: 401
+      @already_rendered = true
     end
   end
 
   def ensure_logged_out
     if current_user
       render json: { session: ['You are already logged in!']}, status: 401
+      @already_rendered = true
     end
   end
 end
