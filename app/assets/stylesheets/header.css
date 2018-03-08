@@ -8,12 +8,13 @@
 }
 
 .nav-left-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   color: #282828;
   font-size: 20px;
   flex-grow: 1;
   padding-left: 1.2rem;
-  padding-top: 1.2rem;
-  padding-bottom: 1.2rem;
 }
 
 .header-link:nth-child(2n) {
@@ -23,6 +24,10 @@
 .header-link {
   text-decoration: none;
   color: inherit;
+}
+
+.search-bar {
+  align-self: center;
 }
 
 .search-bar i {
@@ -40,15 +45,31 @@
   font-family: Sniglet, fantasy;
   font-size: 24px;
   text-decoration: none;
-  color: #003366;
+  color: #004d4d;
 }
 
 .nav-right-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   color: #282828;
   font-size: 20px;
   flex-grow: 1;
-  text-align: right;
   padding-right: 1.2rem;
-  padding-top: 1.2rem;
-  padding-bottom: 1.2rem;
+}
+
+.header-user-menu {
+  margin-left: 1.2rem;
+}
+
+.header-user-menu i {
+  vertical-align: bottom;
+  font-size: 40px;
+  color: #009e74;
+  cursor: pointer;
+}
+
+.header-user-menu:focus {
+  outline-offset: 2px;
+  outline: 1px solid #009e74;
 }

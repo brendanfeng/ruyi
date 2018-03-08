@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 
 const FormButton = ({loggedIn, logout}) => (
   loggedIn ? (
-    <button className="header-link" onClick={ () => logout() }>Sign Out</button>
+    <button className="header-user-menu" onClick={ () => logout() }>
+      <i class="material-icons">mood</i>
+    </button>
     ) : (
     <Link className="header-link" to="/login">Sign In</Link>
     )
