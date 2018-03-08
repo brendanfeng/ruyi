@@ -23,12 +23,6 @@ class SessionForm extends React.Component {
     this.props.processForm(user);
   }
 
-  guestLogin(e) {
-    e.preventDefault();
-    const user = Object.assign({}, {username: "user"});
-    this.props.processForm(user);
-  }
-
   renderErrors() {
     return(
       <ul className="errors-list">
@@ -65,7 +59,11 @@ class SessionForm extends React.Component {
           </button>
           <div className="login-form-alt">
             Don't have an account? Try the
-            <Link to="/" className="login-form-demo"> Demo Login</Link>
+            <Link to="/"
+              onClick={this.props.guestLogin}
+              className="login-form-demo">
+              Demo Login
+            </Link>
           </div>
         </form>
       </div>

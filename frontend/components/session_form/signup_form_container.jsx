@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { signup, receiveErrors } from '../../actions/session_actions';
+import { login, signup, receiveErrors } from '../../actions/session_actions';
 import SessionForm from './session_form';
 
 const mapStateToProps = ({ errors }) => {
@@ -10,7 +10,7 @@ const mapStateToProps = ({ errors }) => {
     formType: 'sign up',
     navLink:
       <div className="login-form-alt">
-        Have an account? <Link to="/login">Log In!</Link>
+        Have an account?<Link to="/login">Log In!</Link>
       </div>,
     buttonText: 'Create Account'
   };
@@ -19,7 +19,10 @@ const mapStateToProps = ({ errors }) => {
 const mapDispatchToProps = dispatch => {
   return {
     processForm: (user) => dispatch(signup(user)),
-    clearErrors: () => dispatch(receiveErrors([]))
+    clearErrors: () => dispatch(receiveErrors([])),
+    guestLogin: () => (
+      dispatch(login({username:"DarrenBuffet", password:"allyoucaneat"})
+    )),
   };
 };
 

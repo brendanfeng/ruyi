@@ -10,7 +10,7 @@ const mapStateToProps = ({ errors }) => {
     formType: 'log in',
     navLink:
       <div className="login-form-alt">
-      New to RuYi? <Link to="/signup">Sign Up!</Link>
+      New to RuYi?<Link to="/signup">Sign Up!</Link>
       </div>,
     buttonText: 'Log Me In!'
   };
@@ -19,7 +19,10 @@ const mapStateToProps = ({ errors }) => {
 const mapDispatchToProps = dispatch => {
   return {
     processForm: (user) => dispatch(login(user)),
-    clearErrors: () => dispatch(receiveErrors([]))
+    clearErrors: () => dispatch(receiveErrors([])),
+    guestLogin: () => (
+      dispatch(login({username:"DarrenBuffet", password:"allyoucaneat"})
+    )),
   };
 };
 
