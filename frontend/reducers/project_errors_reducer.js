@@ -1,4 +1,4 @@
-import { merge } from 
+import { merge } from 'lodash';
 
 import {
   RECEIVE_PROJECT_ERRORS,
@@ -10,11 +10,28 @@ export default (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_PROJECT_ERRORS:
-      return merge()
+      return merge(
+        {},
+        state,
+        {
+        title: action.errors.title,
+        img_url: ["Image required"],
+        blurb: action.errors.blurb,
+        story: action.errors.story,
+        category: action.errors.category,
+        goal: action.errors.goal
+        }
+      );
     case RECEIVE_PROJECT:
-      return [];
     case REMOVE_PROJECT:
-      return [];
+      return {
+        title: [],
+        img_url: [],
+        blurb: [],
+        story: [],
+        category: [],
+        goal: []
+      };
     default:
       return state;
   }

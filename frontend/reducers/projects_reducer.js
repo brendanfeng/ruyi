@@ -11,7 +11,6 @@ const projectsReducer = (state ={}, action) => {
     case RECEIVE_PROJECT:
       return merge(
         {},
-        state,
         {[action.payload.project.id]: action.payload.project}
       );
     case REMOVE_PROJECT:
@@ -22,3 +21,5 @@ const projectsReducer = (state ={}, action) => {
       return state;
   }
 };
+
+export default projectsReducer;

@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // START_TESTING!!!!
-  window.getState = store.getState;
   window.dispatch = store.dispatch;
   // TESTING_END
 
