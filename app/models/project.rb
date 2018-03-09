@@ -3,7 +3,7 @@ class Project < ApplicationRecord
 
   validates :img_url, :blurb, :story, presence: true
   validates :title, presence: true, uniqueness: true
-  validates :goal, presence: true, numericality: { only_integer: true }
+  validates :goal, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 100 }
   validates :category, presence: true, inclusion: { in: CATEGORIES }
   validates :pledged_amount, numericality: { only_integer: true }
   validates :public, presence: true, inclusion: {in: [true, false]}

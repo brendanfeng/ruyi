@@ -9,8 +9,10 @@ export default class Header extends React.Component {
     return (
       <header className="nav-container">
         <nav className="nav-left-container">
-          <Link className="header-link" to="/">Discover</Link>
-          <Link className="header-link" to="/">Start Project</Link>
+          <Link className="header-link"
+            to="/">Discover</Link>
+          <Link className="header-link"
+            to="/projects/create/basics">Start Project</Link>
         </nav>
         <Link to="/" className="logo">RUYI</Link>
         <nav className="nav-right-container">

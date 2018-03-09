@@ -9,10 +9,14 @@ import {
   receiveErrors } from '../../actions/project_actions';
 
 const mapStateToProps = (state, ownProps) => {
+  const projId = ownProps.match.params.projId;
   return {
-    project: state.projects[ownProps.match.params.projId],
+    currentProject: state.ui.currentProject,
+    currentUser: state.session.currentUser,
+    project: state.projects[projId],
     errors: state.errors.projects,
-    formType: 'edit project'
+    formType: 'edit project',
+    pathName: `/projects/update/${projId}`
   };
 };
 
@@ -26,4 +30,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProjectForm));

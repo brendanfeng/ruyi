@@ -1,11 +1,12 @@
 import React from 'react';
-import { Redirect, Switch, NavLink, Link } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 
 import { ProtectedRoute } from '../../util/route_util';
 import Basics from './project_basics';
 import Story from './project_story';
+import Review from './project_review.jsx';
 
-class ProjectForm extends React.Component {
+export default class ProjectForm extends React.Component {
   constructor(props) {
     super(props);
     this.submitForm = this.submitForm.bind(this);
@@ -13,7 +14,7 @@ class ProjectForm extends React.Component {
 
   componentWillMount () {
     const {currentUser, project, formType} = this.props;
-    if (currentUser.id !== project.creator_id && formType === 'edit project') {
+    if (formType === 'edit project' && currentUser.id !== project.creator_id) {
       return <Redirect to={`/projects/${this.props.project.id}`} />;
     }
   }
@@ -21,30 +22,29 @@ class ProjectForm extends React.Component {
   submitForm () {
     const project = Object.assign({}, this.props.currentProject);
     this.props.processForm(project)
-    .then((success) => "redirect", (errors) => "stay");
+    .then((success) => "redirect", (errors) => "stay"); //NB: NOT REAL CODE!!!!!!!
   }
 
   render() {
     return (
       <div className="project-form-container">
-        <form onSubmit={this.handleSubmit} className="project-form-box">
-          <span className="project-form-title">{this.props.formType}</span>
-          <nav className="project-form-navbar">
-            <NavLink to="/projects/:projId/basics">Basics</NavLink>
-            <NavLink to="/projects/:projId/story">Story</NavLink>
-            <NavLink to="/projects/:projId/review">Review</NavLink>
-          </nav>
-          <ProtectedRoute exact path="/projects/:projId/form/:formType/story"
-            component={<Story />} />
-          <ProtectedRoute exact path="/projects/:projId/form/:formType/basics"
-            component={<Basics />} />
-          <ProtectedRoute exact path="/projects/:projId/form/:formType/review"
-            component={<Review submitForm={this.submitForm} />} />
-        </form>
+        <nav className="project-form-navbar">
+          <NavLink to={`${this.props.pathName}/basics`}>Basics</NavLink>
+          <NavLink to={`${this.props.pathName}/story`}>Story</NavLink>
+          <NavLink to={`${this.props.pathName}/review`}>Review</NavLink>
+        </nav>
+        <span className="project-form-title">{this.props.formType}</span>
+        <ProtectedRoute exact path={`${this.props.pathName}/basics`}
+          component={Basics} project={this.props.project}
+            errors={this.props.errors} formType={this.props.formType}
+          />
+        <ProtectedRoute exact path={`${this.props.pathName}/story`}
+          component={Story} project={this.props.project}
+            errors={this.props.errors} formType={this.props.formType}
+          />
+          <ProtectedRoute exact path={`${this.props.pathName}/review`}
+          component={Review} submitForm={this.submitForm} />
       </div>
     );
   }
 }
-
-
-export default ProjectForm;
