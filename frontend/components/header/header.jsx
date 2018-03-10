@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Image } from 'cloudinary-react';
 
 import FormButtonContainer from './form_button_container';
 
@@ -14,7 +15,9 @@ export default class Header extends React.Component {
           <Link className="header-link"
             to="/projects/create/basics">Start Project</Link>
         </nav>
-        <Link to="/" className="logo">RUYI</Link>
+        <Link to="/">
+          <Image publicId="imageedit_2_8651322983.png" ></Image>
+        </Link>
         <nav className="nav-right-container">
           <span className="search-bar">
             Search
