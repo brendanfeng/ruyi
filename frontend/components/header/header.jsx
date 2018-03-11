@@ -16,7 +16,7 @@ export default class Header extends React.Component {
             to="/projects/create/basics">Start Project</Link>
         </nav>
         <Link to="/">
-          <Image publicId="imageedit_2_8651322983.png" ></Image>
+          <Image publicId="imageedit_2_8651322983" ></Image>
         </Link>
         <nav className="nav-right-container">
           <span className="search-bar">

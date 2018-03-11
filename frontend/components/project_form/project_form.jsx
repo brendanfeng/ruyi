@@ -22,7 +22,7 @@ export default class ProjectForm extends React.Component {
   submitForm () {
     const project = Object.assign({}, this.props.currentProject);
     this.props.processForm(project)
-    .then((success) => "redirect", (errors) => "stay"); //NB: NOT REAL CODE!!!!!!!
+    .then((success) => "redirect"); //NB: NOT REAL CODE!!!!!!!
   }
 
   render() {
@@ -34,16 +34,18 @@ export default class ProjectForm extends React.Component {
           <NavLink to={`${this.props.pathName}/review`}>Review</NavLink>
         </nav>
         <span className="project-form-title">{this.props.formType}</span>
-        <ProtectedRoute exact path={`${this.props.pathName}/basics`}
-          component={Basics} project={this.props.project}
-            errors={this.props.errors} formType={this.props.formType}
-          />
-        <ProtectedRoute exact path={`${this.props.pathName}/story`}
-          component={Story} project={this.props.project}
-            errors={this.props.errors} formType={this.props.formType}
-          />
-          <ProtectedRoute exact path={`${this.props.pathName}/review`}
-          component={Review} submitForm={this.submitForm} />
+        <div className="project-form-box">
+          <ProtectedRoute exact path={`${this.props.pathName}/basics`}
+            component={Basics} project={this.props.project}
+              errors={this.props.errors} formType={this.props.formType}
+            />
+          <ProtectedRoute exact path={`${this.props.pathName}/story`}
+            component={Story} project={this.props.project}
+              errors={this.props.errors} formType={this.props.formType}
+            />
+            <ProtectedRoute exact path={`${this.props.pathName}/review`}
+            component={Review} submitForm={this.submitForm} />
+        </div>
       </div>
     );
   }

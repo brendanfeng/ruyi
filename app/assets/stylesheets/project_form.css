@@ -1,0 +1,34 @@
+.project-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f0f0f0;
+}
+
+.project-form-navbar {
+  padding: 24px;
+  font-size: 20px;
+}
+
+.project-form-navbar a {
+  padding: 10px;
+  border-top: 1px solid #282828;
+  border-bottom: 1px solid #282828;
+  border-left: 1px solid #282828;
+  color: #282828;
+  background-color: white;
+}
+
+.project-form-navbar a:last-of-type {
+  border-right: 1px solid #282828;
+}
+
+.project-form-navbar .active {
+  color: #009e74;
+  background-color: #f0f0f0
+}
+
+.project-form-title {
+  text-transform: capitalize;
+  font-size: 22px;
+}
