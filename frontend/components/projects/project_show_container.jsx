@@ -9,6 +9,7 @@ const mapStateToProps = (state, ownProps) => {
   const projId = ownProps.match.params.projId;
   const project = state.entities.projects[projId];
   return {
+    projId: projId,
     project: project,
     currentUser: state.session.currentUser,
     creator: state.entities.users[project.creator_id]

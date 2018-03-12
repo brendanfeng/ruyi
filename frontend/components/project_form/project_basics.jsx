@@ -6,6 +6,11 @@ export default class ProjectBasics extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      title: '',
+      blurb: '',
+      img_url: '',
+      category: 'Design & Tech',
+      goal: 100
     };
     this.handleUpload = this.handleUpload.bind(this);
   }
@@ -56,27 +61,27 @@ export default class ProjectBasics extends React.Component {
             <span>Project Title</span>
             <div className="project-title-field">
               <input type="text"
-                maxLength="100"
+                maxLength="60"
                 onChange={this.update('title')}
                 value={this.state.title}>
               </input>
               <p>
                 Your title expresses your project,
                 so please be clear and descriptive of what you’re making.
-                (Maximum of 100 characters)
+                (Maximum of 60 characters)
               </p>
             </div>
           </label>
           <label className="project-blurb">
             <span>Short Blurb</span>
             <div>
-              <textarea maxLength="250"
+              <textarea maxLength="130"
                 onChange={this.update('blurb')}
                 value={this.state.blurb}></textarea>
               <p>
                 Give people a sense of what you’re doing.
                 Skip “Help me” and focus on what you’re making.
-                (Maximum of 250 characters)
+                (Maximum of 130 characters)
               </p>
             </div>
           </label>

@@ -26,28 +26,32 @@ export default class ProjectReview extends React.Component {
 
   render () {
     return (
-      <div className="project-child-container">
-        <header className="project-child-header">
-          <p className="project-child-greeting">
-            Share with the world!
-          </p>
-          <p className="project-child-description">
-            Check out how your project looks in the preview below. You
-            can save it to edit later, or if you think it's ready,
-            publish the project so you can start fundraising.
-          </p>
-        </header>
+      <div className="project-child-review">
+        <div className="project-child-container">
+          <header className="project-child-header">
+            <p className="project-child-greeting">
+              Share with the world!
+            </p>
+            <p className="project-child-description">
+              Check out how your project looks in the preview below. You
+              can save it to edit later, or if you think it's ready,
+              publish the project so you can start fundraising.
+            </p>
+          </header>
+          <div className="project-submit-buttons">
+            <button className="save-details" onClick={this.props.submitForm}>
+              Save Details
+            </button>
+            <button className="publish" onClick={this.publishProject}>
+              Publish Project
+            </button>
+          </div>
+        </div>
         <ProjectShow project={this.state}
           currentUser={ this.props.currentUser }
-          creator={ {username: 'test'} }
+          creator={ {username: this.props.currentUser.username} }
           fetchProject={ (id) => console.log(id) }>
         </ProjectShow>
-        <button className="save-details" onClick={this.props.submitForm}>
-          Save Details
-        </button>
-        <button className="publish" onClick={this.publishProject}>
-          Publish Project
-        </button>
       </div>
     );
   }

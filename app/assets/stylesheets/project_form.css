@@ -169,12 +169,34 @@
   font-size: 16px;
 }
 
+.project-submit-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
 .save-details {
   padding: 10px;
   font-size: 20px;
+  color: #282828;
+  background-color: white;
+  border: 1px solid #dcdeed;
+}
+
+.save-details:hover {
+  background-color: white;
+  cursor: pointer;
+  border: 1px solid #282828;
+  box-shadow: 1px 1px #282828;
 }
 
 .publish {
   padding: 10px;
   font-size: 20px;
+  color: white;
+  background-color: #009e74
+}
+
+.publish:hover {
+  background-color: #037362;
+  cursor: pointer;
 }

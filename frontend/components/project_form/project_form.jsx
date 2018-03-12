@@ -62,6 +62,7 @@ export default class ProjectForm extends React.Component {
           <Route exact path={`${this.props.pathName}/review`}
             render={(props) => <Review {...props}
             currentProject={this.props.currentProject}
+            currentUser={this.props.currentUser}
             submitForm={this.submitForm}
             updateCurrentProject={this.props.updateCurrentProject}/>}
           />

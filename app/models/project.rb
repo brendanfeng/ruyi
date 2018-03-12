@@ -2,8 +2,8 @@ class Project < ApplicationRecord
   CATEGORIES = ["Comics & Illustration", "Film", "Games", "Food & Craft", "Arts", "Design & Tech", "Publishing", "Music"]
 
   validates :img_url, :story, presence: true
-  validates :blurb, presence: true, length: { maximum: 250 }
-  validates :title, presence: true, uniqueness: true, length: { maximum: 100 }
+  validates :blurb, presence: true, length: { maximum: 130 }
+  validates :title, presence: true, uniqueness: true, length: { maximum: 60 }
   validates :goal, presence: true, numericality: { only_integer: true }
   validates :category, presence: true, inclusion: { in: CATEGORIES }
   validates :pledged_amount, numericality: { only_integer: true }
