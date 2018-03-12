@@ -3,6 +3,18 @@
   flex-direction: column;
   align-items: center;
   background-color: #f0f0f0;
+  width: 100vw;
+  min-width: 900px;
+}
+
+.project-form-box {
+  width: 900px;
+}
+
+.project-form-title {
+  text-transform: capitalize;
+  font-size: 28px;
+  margin-top: 20px;
 }
 
 .project-form-navbar {
@@ -25,10 +37,139 @@
 
 .project-form-navbar .active {
   color: #009e74;
-  background-color: #f0f0f0
+  background-color: #f0f0f0;
 }
 
-.project-form-title {
-  text-transform: capitalize;
-  font-size: 22px;
+.project-form-navbar a:focus {
+  outline: 1px dotted #009e74;
+}
+
+.project-child-container {
+  width: 900px;
+  margin-bottom: 40px;
+}
+
+.project-child-header {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.project-child-greeting {
+  font-size: 42px;
+  margin-bottom: 14px;
+}
+
+.project-child-description {
+  font-size: 20px;
+}
+
+.project-child-form {
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+
+.project-child-form label:first-of-type {
+  margin-top: 24px;
+}
+
+.project-child-form label:last-of-type {
+  margin-bottom: 24px;
+}
+
+.project-child-form label {
+  display: flex;
+  padding: 12px;
+  margin-left: 24px;
+  margin-right: 24px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  background-color: rgba(152,251,152,0.1);
+}
+
+.project-child-form label span {
+  width: 200px;
+  display: inline-block;
+  font-size: 18px;
+}
+
+.project-child-form label div {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-title div input {
+  height: 24px
+}
+
+.project-blurb div textarea {
+  height: 60px;
+  font-size: 16px;
+  border: 1px solid #dddded;
+}
+
+.project-blurb div textarea:focus {
+  outline: 1px solid #009e74;
+}
+
+.project-child-form label div input {
+  flex-grow: 1;
+  font-size: 16px;
+  border: 1px solid #dddded;
+  padding: 5px;
+}
+
+.project-child-form label div input:focus {
+  outline: 1px solid #009e74;
+}
+
+.project-child-form label div p {
+  font-size: 14px;
+}
+
+.project-child-form select {
+  width: 500px;
+  height: 24px;
+}
+
+.project-image-widget button {
+  height: 24px;
+  font-size: 16px;
+  border: 1px solid #dddedd;
+}
+
+.project-image-widget button:focus {
+  outline: 1px solid #009e74;
+}
+
+.image-filename {
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 3px;
+}
+
+.project-category-dropdown {
+  font-size: 16px;
+  border: 1px solid #dddedd;
+  border-radius: 0px;
+}
+
+.project-category-dropdown:focus {
+  outline: 1px solid #009e74;
+}
+
+.project-goal input {
+  text-align: right;
+}
+
+.save-details {
+  padding: 10px;
+  font-size: 20px;
+}
+
+.publish {
+  padding: 10px;
+  font-size: 20px;
 }

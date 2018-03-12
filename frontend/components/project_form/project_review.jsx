@@ -1,14 +1,45 @@
 import React from 'react';
 
-const Review = (props) => {
-  return (
-    <div>
-      <header>
-        Wazzupppp GO SUBMIT!
-      </header>
-      <button onClick={props.submitForm}>Save Project</button>
-    </div>
-  );
-};
+import { updateCurrentProject } from '../../actions/ui_actions';
 
-export default Review;
+export default class ProjectReview extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = Object.assign({}, this.props.currentProject);
+    this.publishProject = this.publishProject.bind(this);
+  }
+
+  publishProject (e) {
+    e.preventDefault();
+    this.setState({public: true});
+    this.props.updateCurrentProject(this.state);
+    this.props.submitForm();
+  }
+
+  render () {
+    return (
+      <div className="project-child-container">
+        <header className="project-child-header">
+          <p className="project-child-greeting">
+            Share with the world!
+          </p>
+          <p className="project-child-description">
+            Check out how your project looks in the preview below. You
+            can save it to edit later, or if you think it's ready,
+            publish the project so you can start fundraising.
+          </p>
+        </header>
+        <button className="save-details" onClick={this.props.submitForm}>
+          Save Details
+        </button>
+        <button className="publish" onClick={this.publishProject}>
+          Publish Project
+        </button>
+      </div>
+    );
+  }
+
+  componentWillUnmount() {
+    updateCurrentProject(Object.assign({}, this.state));
+  }
+}

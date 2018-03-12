@@ -6,7 +6,7 @@ const uiReducer = (state={}, action) => {
   Object.freeze(state);
   switch(action.type) {
     case UPDATE_CURRENT_PROJECT:
-      return Object.assign(action.currentProject);
+      return Object.assign({}, {currentProject: action.currentProject});
     default:
       return state;
   }

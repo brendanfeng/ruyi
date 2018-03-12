@@ -7,6 +7,7 @@ import {
   updateProject,
   deleteProject,
   receiveErrors } from '../../actions/project_actions';
+import { updateCurrentProject } from '../../actions/ui_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const projId = ownProps.match.params.projId;
@@ -14,8 +15,8 @@ const mapStateToProps = (state, ownProps) => {
     currentProject: state.ui.currentProject,
     currentUser: state.session.currentUser,
     project: state.projects[projId],
-    errors: state.errors.projects,
-    formType: 'edit project',
+    errors: Object.values(state.errors.projects),
+    formType: 'edit your project',
     pathName: `/projects/update/${projId}`
   };
 };
@@ -27,6 +28,7 @@ const mapDispatchToProps = (dispatch) => {
     clearErrors: () => dispatch(receiveErrors(
       {title: [], img_url: [], blurb: [], story: [], category: [], goal: []}
     )),
+    updateCurrentProject: (proj) => dispatch(updateCurrentProject(proj)),
   };
 };
 

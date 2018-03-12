@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 import ProjectForm from './project_form';
 import { createProject, receiveErrors } from '../../actions/project_actions';
+import { updateCurrentProject } from '../../actions/ui_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -19,8 +20,8 @@ const mapStateToProps = (state, ownProps) => {
     },
     currentProject: state.ui.currentProject,
     currentUser: state.session.currentUser,
-    errors: state.errors.projects,
-    formType: 'create project',
+    errors: Object.values(state.errors.projects),
+    formType: 'create your project',
     pathName: "/projects/create"
   };
 };
@@ -31,6 +32,7 @@ const mapDispatchToProps = (dispatch) => {
     clearErrors: () => dispatch(receiveErrors(
       {title: [], img_url: [], blurb: [], story: [], category: [], goal: []}
     )),
+    updateCurrentProject: (proj) => dispatch(updateCurrentProject(proj))
   };
 };
 
