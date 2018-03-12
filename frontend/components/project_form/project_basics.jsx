@@ -2,13 +2,26 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Image, Transformation } from 'cloudinary-react';
 
-import { updateCurrentProject } from '../../actions/ui_actions';
-
 export default class ProjectBasics extends React.Component {
   constructor(props) {
     super(props);
-    this.state = Object.assign({}, this.props.currentProject);
+    this.state = {
+    };
     this.handleUpload = this.handleUpload.bind(this);
+  }
+
+  componentDidMount () {
+    this.setState(this.props.currentProject);
+  }
+
+  componentWillReceiveProps (newProps) {
+    this.setState(newProps.currentProject);
+  }
+
+  update(field) {
+    return e => this.setState({
+      [field]: e.currentTarget.value
+    });
   }
 
   handleUpload(e) {
@@ -42,7 +55,10 @@ export default class ProjectBasics extends React.Component {
           <label className="project-title">
             <span>Project Title</span>
             <div className="project-title-field">
-              <input type="text" maxLength="100" value={this.state.title}>
+              <input type="text"
+                maxLength="100"
+                onChange={this.update('title')}
+                value={this.state.title}>
               </input>
               <p>
                 Your title expresses your project,
@@ -54,7 +70,9 @@ export default class ProjectBasics extends React.Component {
           <label className="project-blurb">
             <span>Short Blurb</span>
             <div>
-              <textarea maxLength="250" value={this.state.blurb}></textarea>
+              <textarea maxLength="250"
+                onChange={this.update('blurb')}
+                value={this.state.blurb}></textarea>
               <p>
                 Give people a sense of what you’re doing.
                 Skip “Help me” and focus on what you’re making.
@@ -74,21 +92,21 @@ export default class ProjectBasics extends React.Component {
           </label>
           <label className="project-category">
             <span>Category</span>
-          <select className="project-category-dropdown">
-            <option>Design & Tech</option>
-            <option>Arts</option>
-            <option>Music</option>
-            <option>Comics & Illustration</option>
-            <option>Film</option>
-            <option>Games</option>
-            <option>Food & Craft</option>
-            <option>Publishing</option>
+          <select className="project-category-dropdown" value={this.state.category} onChange={this.update('category')}>
+            <option value="Design & Tech">Design & Tech</option>
+            <option value="Arts">Arts</option>
+            <option value="Music">Music</option>
+            <option value="Comics & Illustration">Comics & Illustration</option>
+            <option value="Film">Film</option>
+            <option value="Games">Games</option>
+            <option value="Food & Craft">Food & Craft</option>
+            <option value="Publishing">Publishing</option>
           </select>
           </label>
           <label className="project-goal">
             <span>Fundraising Goal ($)</span>
             <div>
-              <input type="number" value={this.state.goal}></input>
+              <input type="number" onChange={this.update('goal')} value={this.state.goal}></input>
               <p>
                 Funding on RuYi is all-or-nothing.
                 It’s okay to raise more than your goal,
@@ -105,6 +123,6 @@ export default class ProjectBasics extends React.Component {
   }
 
   componentWillUnmount() {
-    updateCurrentProject(Object.assign({}, this.state));
+    this.props.updateCurrentProject(Object.assign({}, this.state));
   }
 }

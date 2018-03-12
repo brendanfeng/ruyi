@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, NavLink } from 'react-router-dom';
+import { Route, Redirect, NavLink } from 'react-router-dom';
 
 import { ProtectedRoute } from '../../util/route_util';
 import Basics from './project_basics';
@@ -14,14 +14,10 @@ export default class ProjectForm extends React.Component {
   }
 
   componentWillMount () {
-    const {currentUser, project, formType} = this.props;
-    if (formType === 'edit your project' && currentUser.id !== project.creator_id) {
-      return <Redirect to={`/projects/${this.props.project.id}`} />;
+    const {currentUser, currentProject, formType} = this.props;
+    if (formType === 'edit your project' && currentUser.id !== currentProject.creator_id) {
+      return <Redirect to={`/projects/${this.props.currentProject.id}`} />;
     }
-  }
-
-  componentDidMount () {
-    this.props.updateCurrentProject(this.props.project);
   }
 
   submitForm (e) {
@@ -53,17 +49,22 @@ export default class ProjectForm extends React.Component {
           <NavLink to={`${this.props.pathName}/review`}>Review</NavLink>
         </nav>
         <div className="project-form-box">
-          <ProtectedRoute exact path={`${this.props.pathName}/basics`}
-            component={Basics} props={this.props.currentProject}
-            project={this.props.project}
-            />
-          <ProtectedRoute exact path={`${this.props.pathName}/story`}
-            component={Story} currentProject={this.props.currentProject}
-
-            />
-            <ProtectedRoute exact path={`${this.props.pathName}/review`}
-            component={Review} currentProject={this.props.currentProject}
-            submitForm={this.submitForm} />
+          <Route exact path={`${this.props.pathName}/basics`}
+            render={(props) => <Basics {...props}
+            currentProject={this.props.currentProject}
+            updateCurrentProject={this.props.updateCurrentProject}/>}
+          />
+          <Route exact path={`${this.props.pathName}/story`}
+            render={(props) => <Story {...props}
+            currentProject={this.props.currentProject}
+            updateCurrentProject={this.props.updateCurrentProject}/>}
+          />
+          <Route exact path={`${this.props.pathName}/review`}
+            render={(props) => <Review {...props}
+            currentProject={this.props.currentProject}
+            submitForm={this.submitForm}
+            updateCurrentProject={this.props.updateCurrentProject}/>}
+          />
         </div>
       </div>
     );

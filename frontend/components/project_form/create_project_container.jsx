@@ -8,19 +8,9 @@ import { updateCurrentProject } from '../../actions/ui_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    project: {
-      title: '',
-      img_url: '',
-      blurb: '',
-      category: '',
-      story: '',
-      goal: 100,
-      pledged_amount: 0,
-      public: false
-    },
     currentProject: state.ui.currentProject,
     currentUser: state.session.currentUser,
-    errors: Object.values(state.errors.projects),
+    errors: state.errors.projects,
     formType: 'create your project',
     pathName: "/projects/create"
   };

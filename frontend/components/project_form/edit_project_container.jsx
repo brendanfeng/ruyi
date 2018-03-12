@@ -14,8 +14,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     currentProject: state.ui.currentProject,
     currentUser: state.session.currentUser,
-    project: state.projects[projId],
-    errors: Object.values(state.errors.projects),
+    errors: state.errors.projects,
     formType: 'edit your project',
     pathName: `/projects/update/${projId}`
   };

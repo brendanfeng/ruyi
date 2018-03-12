@@ -1,0 +1,29 @@
+.project-show-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.project-show-header {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  width: 100%;
+  height: 180px;
+}
+
+.project-show-user {
+  width: 12.5%;
+}
+
+.project-show-intro {
+  flex-grow: 1;
+}
+
+.project-show-info {
+  display: flex;
+}
+
+.project-show-info img {
+  
+}

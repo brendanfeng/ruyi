@@ -1,18 +1,26 @@
 import React from 'react';
 
-import { updateCurrentProject } from '../../actions/ui_actions';
+import ProjectShow from '../projects/project_show';
 
 export default class ProjectReview extends React.Component {
   constructor(props) {
     super(props);
-    this.state = Object.assign({}, this.props.currentProject);
+    this.state = {};
     this.publishProject = this.publishProject.bind(this);
+  }
+
+  componentDidMount () {
+    this.setState(this.props.currentProject);
+  }
+
+  componentWillReceiveProps (newProps) {
+    this.setState(newProps.currentProject);
   }
 
   publishProject (e) {
     e.preventDefault();
     this.setState({public: true});
-    this.props.updateCurrentProject(this.state);
+    this.props.updateCurrentProject(Object.assign({}, this.state));
     this.props.submitForm();
   }
 
@@ -29,6 +37,11 @@ export default class ProjectReview extends React.Component {
             publish the project so you can start fundraising.
           </p>
         </header>
+        <ProjectShow project={this.state}
+          currentUser={ this.props.currentUser }
+          creator={ {username: 'test'} }
+          fetchProject={ (id) => console.log(id) }>
+        </ProjectShow>
         <button className="save-details" onClick={this.props.submitForm}>
           Save Details
         </button>
@@ -40,6 +53,6 @@ export default class ProjectReview extends React.Component {
   }
 
   componentWillUnmount() {
-    updateCurrentProject(Object.assign({}, this.state));
+    this.props.updateCurrentProject(Object.assign({}, this.state));
   }
 }

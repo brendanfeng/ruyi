@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: center;
   background-color: #f0f0f0;
-  width: 100vw;
   min-width: 900px;
 }
 
@@ -146,12 +145,13 @@
 
 .image-filename {
   text-align: center;
-  text-decoration: underline;
+  color: #009e74;
   margin-bottom: 3px;
 }
 
 .project-category-dropdown {
   font-size: 16px;
+  background-color: white;
   border: 1px solid #dddedd;
   border-radius: 0px;
 }
@@ -162,6 +162,11 @@
 
 .project-goal input {
   text-align: right;
+}
+
+.ql-editor {
+  height: 550px;
+  font-size: 16px;
 }
 
 .save-details {

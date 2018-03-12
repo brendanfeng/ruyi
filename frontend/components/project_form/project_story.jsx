@@ -1,15 +1,41 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-import { updateCurrentProject } from '../../actions/ui_actions';
+import ReactQuill from 'react-quill';
 
 export default class ProjectStory extends React.Component {
   constructor(props) {
     super(props);
-    this.state = Object.assign({}, this.props.currentProject);
+    this.state = {};
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentDidMount () {
+    this.setState(this.props.currentProject);
+  }
+
+  componentWillReceiveProps (newProps) {
+    this.setState(newProps.currentProject);
+  }
+
+  handleChange(html) {
+    this.setState({ story: html });
   }
 
   render() {
+    const quillModules = {
+      toolbar: [
+        [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
+        [{size: []}],
+        ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+        [{'list': 'ordered'}, {'list': 'bullet'},
+         {'indent': '-1'}, {'indent': '+1'}],
+        ['link', 'image', 'video'],
+        ['clean']
+      ],
+      clipboard: {
+        matchVisual: false,
+      }
+    };
     return (
       <div className="project-child-container">
         <header className="project-child-header">
@@ -23,13 +49,20 @@ export default class ProjectStory extends React.Component {
           </p>
         </header>
         <form className="project-child-form">
-          
+          <ReactQuill
+            theme="snow"
+            value={this.state.story}
+            onChange={this.handleChange}
+            modules={ quillModules }
+            placeholder="Write your story here"
+            scrollingContainer="#scrolling-container">
+          </ReactQuill>
         </form>
       </div>
     );
   }
 
   componentWillUnmount() {
-    updateCurrentProject(Object.assign({}, this.state));
+    this.props.updateCurrentProject(Object.assign({}, this.state));
   }
 }
