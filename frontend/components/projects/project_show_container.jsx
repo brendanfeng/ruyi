@@ -11,8 +11,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     projId: projId,
     project: project,
-    currentUser: state.session.currentUser,
-    creator: state.entities.users[project.creator_id]
+    currentUser: state.session.currentUser || {id: null},
+    creator: state.entities.users[project.creator_id],
   };
 };
 

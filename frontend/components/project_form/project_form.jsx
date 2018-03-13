@@ -45,7 +45,8 @@ export default class ProjectForm extends React.Component {
             currentUser={this.props.currentUser}
             submitForm={this.submitForm}
             updateCurrentProject={this.props.updateCurrentProject}
-            errors={this.props.errors}/>}
+            errors={this.props.errors}
+            formType={this.props.formType}/>}
           />
         </div>
       </div>

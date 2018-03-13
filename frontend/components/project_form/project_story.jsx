@@ -5,7 +5,16 @@ import ReactQuill from 'react-quill';
 export default class ProjectStory extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      title: '',
+      blurb: '',
+      img_url: '',
+      story: '',
+      category: 'Design & Tech',
+      pledged_amount: 0,
+      goal: 100,
+      creator_id: -1
+    };
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -49,14 +58,15 @@ export default class ProjectStory extends React.Component {
           </p>
         </header>
         <form className="project-child-form">
-          <ReactQuill
-            theme="snow"
-            value={this.state.story}
-            onChange={this.handleChange}
-            modules={ quillModules }
-            placeholder="Write your story here"
-            scrollingContainer="#scrolling-container">
-          </ReactQuill>
+          <div className="project-form-story">
+            <ReactQuill
+              theme="snow"
+              value={this.state.story}
+              onChange={this.handleChange}
+              modules={ quillModules }
+              placeholder="Make your case..."
+            />
+          </div>
         </form>
       </div>
     );

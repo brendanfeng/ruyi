@@ -9,8 +9,11 @@ export default class ProjectBasics extends React.Component {
       title: '',
       blurb: '',
       img_url: '',
+      story: '',
       category: 'Design & Tech',
-      goal: 100
+      pledged_amount: 0,
+      goal: 100,
+      creator_id: -1
     };
     this.handleUpload = this.handleUpload.bind(this);
   }

@@ -3,11 +3,11 @@
   flex-direction: column;
   align-items: center;
   background-color: #f0f0f0;
-  min-width: 900px;
+  min-width: 1000px;
 }
 
 .project-form-box {
-  width: 900px;
+  width: 1000px;
 }
 
 .project-form-title {
@@ -44,7 +44,7 @@
 }
 
 .project-child-container {
-  width: 900px;
+  width: 1000px;
   margin-bottom: 40px;
 }
 
@@ -88,13 +88,13 @@
 }
 
 .project-child-form label span {
-  width: 200px;
+  width: 250px;
   display: inline-block;
   font-size: 18px;
 }
 
 .project-child-form label div {
-  width: 500px;
+  width: 550px;
   display: flex;
   flex-direction: column;
 }
@@ -129,7 +129,7 @@
 }
 
 .project-child-form select {
-  width: 500px;
+  width: 550px;
   height: 24px;
 }
 
@@ -164,14 +164,15 @@
   text-align: right;
 }
 
-.ql-editor {
-  height: 550px;
-  font-size: 16px;
-}
-
 .project-submit-buttons {
   display: flex;
   justify-content: space-around;
+}
+
+.project-submit-buttons i {
+  vertical-align: bottom;
+  font-size: 20px;
+  margin-right: 0.1rem;
 }
 
 .save-details {
@@ -188,7 +189,6 @@
   cursor: pointer;
   border: 1px solid #282828;
   box-shadow: 1px 1px #282828;
-  font-weight: 400;
 }
 
 .publish {
@@ -202,6 +202,23 @@
 .publish:hover {
   background-color: #037362;
   cursor: pointer;
+}
+
+.delete-button {
+  padding: 10px;
+  font-size: 20px;
+  color: rgba(255, 69, 0, 0.3);
+  background-color: #dcdeed;
+  font-weight: 400;
+  border: 1px solid #f0f0f0;
+}
+
+.delete-button:hover {
+  background-color: black;
+  color: rgb(255,69,0);
+  border: 1px solid rgb(255,69,0);
+  cursor: pointer;
+  box-shadow: 1px 1px rgb(255,69,0);
 }
 
 .project-errors {

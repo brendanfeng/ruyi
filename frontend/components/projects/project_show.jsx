@@ -1,22 +1,45 @@
 import React from 'react';
+import ReactQuill from 'react-quill';
 import {Redirect, Link} from 'react-router-dom';
 import { Image, Transformation } from 'cloudinary-react';
-import sanitizeHtml from 'sanitize-html';
 
 export default class ProjectShow extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      project: null
+    };
+  }
 
   componentDidMount() {
     if (this.props.project) {
-      this.project = this.props.project;
+      this.setState({project: this.props.project});
     } else {
-      this.project = this.props.fetchProject(this.props.projId);
+      this.setState({project: this.props.fetchProject(this.props.projId)});
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.project) {
+      this.setState({project: nextProps.project});
+    }
+  }
+
+  renderEditButton () {
+    if (this.props.currentUser.id === this.state.project.creator_id) {
+      return (
+        <Link to={`/projects/update/${this.props.projId}/basics`}
+          className="edit-button">Edit Project</Link>
+      );
+    } else {
+      return (<div></div>);
     }
   }
 
   privateMessage() {
-    if (!this.props.project.public) {
+    if (!this.state.project.public) {
       return (
-        <div class="private-message">
+        <div className="private-message">
           <p>THIS PROJECT IS NOT LIVE</p>
           <p>This is only a draft that you can preview</p>
         </div>
@@ -25,13 +48,12 @@ export default class ProjectShow extends React.Component {
   }
 
   render () {
-    if (!this.props.project) {
+    if (!this.state.project) {
       return null;
     }
     const {title, blurb, img_url, category, story, goal, pledged_amount}
-     = this.props.project;
+     = this.state.project;
     const statusWidth = Math.floor((pledged_amount / goal) * 100);
-    const cleanHtml = () => ({__html: sanitizeHtml(story)});
     return (
       <div className="project-show-container">
         {this.privateMessage()}
@@ -46,9 +68,12 @@ export default class ProjectShow extends React.Component {
           </div>
         </header>
         <section className="project-show-info">
-          <Image publicId={img_url}>
-            <Transformation quality="auto" fetchFormat="auto" />
-          </Image>
+          <div className="project-show-image">
+            <Image publicId={img_url}>
+              <Transformation quality="auto:eco" fetchFormat="auto" />
+              <Transformation width="700" height="550" crop="limit" />
+            </Image>
+          </div>
           <aside className="project-show-aside">
             <div className="project-aside-progress">
               <div className="project-aside-status">
@@ -65,15 +90,21 @@ export default class ProjectShow extends React.Component {
             </div>
             <div className="project-aside-bottom">
               <p className="project-aside-category">{category}</p>
-              <Link to={`/projects/edit/${this.props.projId}`} className="edit-button">Edit Project</Link>
+              {this.renderEditButton()}
             </div>
           </aside>
         </section>
         <section className="project-show-body">
-          <div className="project-show-story" dangerouslySetInnerHTML={cleanHtml()}>
+          <div className="project-show-story">
+            <ReactQuill
+              theme="bubble"
+              modules={ {toolbar: null} }
+              readOnly={ true }
+              value={this.state.project.story}
+              />
           </div>
           <div className="project-backing-options">
-            HEY PAY ME!
+            PLEDGGGGGEEEEEE YOUR MONEY HERE!
           </div>
         </section>
       </div>

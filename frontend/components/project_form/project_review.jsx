@@ -6,7 +6,16 @@ import ProjectShow from '../projects/project_show';
 export default class ProjectReview extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      title: '',
+      blurb: '',
+      img_url: '',
+      story: '',
+      category: 'Design & Tech',
+      pledged_amount: 0,
+      goal: 100,
+      creator_id: -1
+    };
     this.publishProject = this.publishProject.bind(this);
   }
 
@@ -37,6 +46,19 @@ export default class ProjectReview extends React.Component {
     );
   }
 
+  renderDeleteButton () {
+    if (this.props.formType === "edit your project") {
+      return (
+        <button className="delete-button" id='delete'>
+          <i className="material-icons">delete_forever</i>
+          Delete Project
+        </button>
+      );
+    } else {
+      return <div></div>;
+    }
+  }
+
   render () {
     return (
       <div className="project-child-review">
@@ -53,15 +75,20 @@ export default class ProjectReview extends React.Component {
           </header>
           <div className="project-submit-buttons">
             <button className="save-details" onClick={this.props.submitForm}>
+              <i className="material-icons">update</i>
               Save Details
             </button>
             <button className="publish" onClick={this.publishProject}>
+              <i className="material-icons">present_to_all</i>
               Publish Project
             </button>
+            {this.renderDeleteButton()}
           </div>
           <div className="project-errors">{this.renderErrors()}</div>
         </div>
-        <ProjectShow project={this.state}
+        <ProjectShow
+          projId={this.props.currentProject.id}
+          project={this.state}
           currentUser={ this.props.currentUser }
           creator={ {username: this.props.currentUser.username} }
           fetchProject={ (id) => console.log(id) }>

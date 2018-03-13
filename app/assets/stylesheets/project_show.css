@@ -4,6 +4,7 @@
   align-items: center;
   width: 100%;
   background-color: white;
+  margin-bottom: 40px;
 }
 
 .private-message {
@@ -16,11 +17,12 @@
 .project-show-header {
   display: flex;
   justify-content: space-between;
+  width: inherit;
   flex-grow: 1;
   height: 300px;
-  width: 100%;
   margin-top: 20px;
-  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #dcdeed;
 }
 
 .project-show-user {
@@ -48,6 +50,7 @@
 
 .project-show-intro {
   display: flex;
+  min-width: 400px;
   flex-grow: 1;
   flex-direction: column;
   padding: 3rem 3rem 0rem 3rem;
@@ -77,19 +80,22 @@
 .project-show-info {
   display: flex;
   width: 100%;
+  min-height: 400px;
   justify-content: space-between;
+  margin-bottom: 32px;
 }
 
-.project-show-info img {
-  min-width: 400px;
-  min-height: 400px;
+.project-show-image {
+  min-width: 500px;
+  max-height: 550px;
 }
 
 .project-show-aside {
   display: flex;
   flex-direction: column;
+  min-width: 236px;
   flex-grow: 1;
-  padding: 2rem;
+  padding: 32px;
   justify-content: space-between;
 }
 
@@ -137,15 +143,18 @@
 }
 
 .project-aside-category {
-  font-size: 28px;
+  font-size: 22px;
   color: #282828;
-  padding: 24px 0px;
+  padding-top: 24px;
   text-align: center;
 }
 
 .project-show-body {
+  border-top: 1px solid #dcdedd;
+  padding: 24px 0;
   width: 100%;
   display: flex;
+  min-height: 300px;
 }
 
 .project-show-story {
@@ -159,6 +168,6 @@
 }
 
 .project-backing-options {
-  width: 350px;
+  width: 300px;
   border: 1px solid black;
 }
