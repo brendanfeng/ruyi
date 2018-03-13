@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     currentProject: state.ui.currentProject,
     currentUser: state.session.currentUser,
-    errors: state.errors.projects,
+    errors: Object.values(state.errors.projects),
     formType: 'create your project',
     pathName: "/projects/create"
   };

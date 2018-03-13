@@ -10,14 +10,6 @@ export default class ProjectForm extends React.Component {
   constructor(props) {
     super(props);
     this.submitForm = this.submitForm.bind(this);
-    this.renderErrors = this.renderErrors.bind(this);
-  }
-
-  componentWillMount () {
-    const {currentUser, currentProject, formType} = this.props;
-    if (formType === 'edit your project' && currentUser.id !== currentProject.creator_id) {
-      return <Redirect to={`/projects/${this.props.currentProject.id}`} />;
-    }
   }
 
   submitForm (e) {
@@ -25,18 +17,6 @@ export default class ProjectForm extends React.Component {
     const project = Object.assign({}, this.props.currentProject);
     this.props.processForm(project)
     .then((success) => "redirect"); //NB: NOT REAL CODE!!!!!!!
-  }
-
-  renderErrors(errorsArray) {
-    return(
-      <ul className="errors-list">
-        {errorsArray.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
-      </ul>
-    );
   }
 
   render() {
@@ -64,7 +44,8 @@ export default class ProjectForm extends React.Component {
             currentProject={this.props.currentProject}
             currentUser={this.props.currentUser}
             submitForm={this.submitForm}
-            updateCurrentProject={this.props.updateCurrentProject}/>}
+            updateCurrentProject={this.props.updateCurrentProject}
+            errors={this.props.errors}/>}
           />
         </div>
       </div>

@@ -180,6 +180,7 @@
   color: #282828;
   background-color: white;
   border: 1px solid #dcdeed;
+  font-weight: 300;
 }
 
 .save-details:hover {
@@ -187,16 +188,22 @@
   cursor: pointer;
   border: 1px solid #282828;
   box-shadow: 1px 1px #282828;
+  font-weight: 400;
 }
 
 .publish {
   padding: 10px;
   font-size: 20px;
   color: white;
-  background-color: #009e74
+  background-color: #009e74;
+  font-weight: 300;
 }
 
 .publish:hover {
   background-color: #037362;
   cursor: pointer;
+}
+
+.project-errors {
+  text-align: center;
 }

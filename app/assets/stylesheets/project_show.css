@@ -6,12 +6,20 @@
   background-color: white;
 }
 
+.private-message {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 1rem;
+  color: #037362;
+}
+
 .project-show-header {
   display: flex;
   justify-content: space-between;
   flex-grow: 1;
   height: 300px;
   width: 100%;
+  margin-top: 20px;
   padding-bottom: 2rem;
 }
 
@@ -82,6 +90,7 @@
   flex-direction: column;
   flex-grow: 1;
   padding: 2rem;
+  justify-content: space-between;
 }
 
 .project-aside-status {
@@ -107,6 +116,26 @@
   opacity: 0.7;
 }
 
+.project-aside-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-button {
+  background-color: #009e74;
+  color: white;
+  font-weight: 300;
+  padding: 15px 0px;
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+}
+
+.edit-button:hover {
+  background-color: #037362;
+}
+
 .project-aside-category {
   font-size: 28px;
   color: #282828;
@@ -114,12 +143,22 @@
   text-align: center;
 }
 
-.project-show-story {
+.project-show-body {
   width: 100%;
+  display: flex;
+}
+
+.project-show-story {
+  flex-grow: 1;
   overflow-wrap: break-word;
   word-wrap: break-word;
   -ms-hyphens: auto;
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
+}
+
+.project-backing-options {
+  width: 350px;
+  border: 1px solid black;
 }

@@ -6,7 +6,16 @@ import {
   REMOVE_PROJECT,
 } from '../actions/project_actions';
 
-export default (state = {}, action) => {
+const _defaultState = {
+  title: [],
+  img_url: [],
+  blurb: [],
+  story: [],
+  category: [],
+  goal: [],
+};
+
+export default (state = _defaultState, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_PROJECT_ERRORS:

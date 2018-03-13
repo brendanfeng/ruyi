@@ -1,4 +1,5 @@
 import React from 'react';
+import { flattenDeep } from 'lodash';
 
 import ProjectShow from '../projects/project_show';
 
@@ -24,6 +25,18 @@ export default class ProjectReview extends React.Component {
     this.props.submitForm();
   }
 
+  renderErrors() {
+    return(
+      <ul className="errors-list">
+        {flattenDeep(this.props.errors).map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
   render () {
     return (
       <div className="project-child-review">
@@ -46,12 +59,16 @@ export default class ProjectReview extends React.Component {
               Publish Project
             </button>
           </div>
+          <div className="project-errors">{this.renderErrors()}</div>
         </div>
         <ProjectShow project={this.state}
           currentUser={ this.props.currentUser }
           creator={ {username: this.props.currentUser.username} }
           fetchProject={ (id) => console.log(id) }>
         </ProjectShow>
+        <div>
+
+        </div>
       </div>
     );
   }
