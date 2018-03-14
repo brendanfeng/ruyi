@@ -12,21 +12,11 @@ export default class ProjectShow extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.project) {
-      this.setState({project: this.props.project});
-    } else {
-      this.setState({project: this.props.fetchProject(this.props.projId)});
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.project) {
-      this.setState({project: nextProps.project});
-    }
+    if (!this.props.project) return this.props.fetchProject(this.props.projId);
   }
 
   renderEditButton () {
-    if (this.props.currentUser.id === this.state.project.creator_id) {
+    if (this.props.currentUser.id === this.props.project.creator_id) {
       return (
         <Link to={`/projects/update/${this.props.projId}/basics`}
           className="edit-button">Edit Project</Link>
@@ -37,7 +27,7 @@ export default class ProjectShow extends React.Component {
   }
 
   privateMessage() {
-    if (!this.state.project.public) {
+    if (!this.props.project.public) {
       return (
         <div className="private-message">
           <p>THIS PROJECT IS NOT LIVE</p>
@@ -48,11 +38,11 @@ export default class ProjectShow extends React.Component {
   }
 
   render () {
-    if (!this.state.project) {
+    if (!this.props.project) {
       return null;
     }
     const {title, blurb, img_url, category, story, goal, pledged_amount}
-     = this.state.project;
+     = this.props.project;
     const statusWidth = Math.floor((pledged_amount / goal) * 100);
     return (
       <div className="project-show-container">
@@ -71,7 +61,7 @@ export default class ProjectShow extends React.Component {
           <div className="project-show-image">
             <Image publicId={img_url}>
               <Transformation quality="auto:eco" fetchFormat="auto" />
-              <Transformation width="700" height="550" crop="limit" />
+              <Transformation width="850" height="550" crop="limit" />
             </Image>
           </div>
           <aside className="project-show-aside">
@@ -100,7 +90,7 @@ export default class ProjectShow extends React.Component {
               theme="bubble"
               modules={ {toolbar: null} }
               readOnly={ true }
-              value={this.state.project.story}
+              value={this.props.project.story}
               />
           </div>
           <div className="project-backing-options">

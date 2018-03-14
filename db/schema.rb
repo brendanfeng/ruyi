@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180308142105) do
+ActiveRecord::Schema.define(version: 20180314203819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20180308142105) do
     t.integer "creator_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["blurb"], name: "index_projects_on_blurb"
+    t.index ["blurb"], name: "trgm_idx_on_blurb", using: :gin
     t.index ["category"], name: "index_projects_on_category"
     t.index ["category"], name: "trgm_idx_on_category", using: :gin
     t.index ["creator_id"], name: "index_projects_on_creator_id"

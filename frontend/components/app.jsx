@@ -12,14 +12,16 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 const App = () => (
   <div>
     <Header />
-      <AuthRoute exact path="/login" component={LoginFormContainer} />
-      <AuthRoute exact path="/signup" component={SignupFormContainer} />
-      <ProtectedRoute path="/projects/create/"
-        component={CreateProjectContainer} />
-      <ProtectedRoute path="/projects/update/:projId/"
-        component={EditProjectContainer} />
-      <Route exact path="projects/show/:projId"
-        component={ShowProjectContainer}/>
+      <div className="app-body">
+        <AuthRoute exact path="/login" component={LoginFormContainer} />
+        <AuthRoute exact path="/signup" component={SignupFormContainer} />
+        <ProtectedRoute path="/projects/create/"
+          component={CreateProjectContainer} />
+        <ProtectedRoute path="/projects/update/:projId/"
+          component={EditProjectContainer} />
+        <Route exact path="/projects/show/:projId/"
+          component={ShowProjectContainer}/>
+      </div>
   </div>
 );
 

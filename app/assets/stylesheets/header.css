@@ -66,3 +66,8 @@
   outline-offset: 2px;
   outline: 1px solid #009e74;
 }
+
+.app-body {
+  display: flex;
+  justify-content: center;
+}

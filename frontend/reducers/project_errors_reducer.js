@@ -8,7 +8,7 @@ import {
 
 const _defaultState = {
   title: [],
-  img_url: [],
+  image: [],
   blurb: [],
   story: [],
   category: [],
@@ -21,10 +21,9 @@ export default (state = _defaultState, action) => {
     case RECEIVE_PROJECT_ERRORS:
       return merge(
         {},
-        state,
         {
         title: action.errors.title,
-        img_url: ["Image required"],
+        image: action.errors.image,
         blurb: action.errors.blurb,
         story: action.errors.story,
         category: action.errors.category,
@@ -35,7 +34,7 @@ export default (state = _defaultState, action) => {
     case REMOVE_PROJECT:
       return {
         title: [],
-        img_url: [],
+        image: [],
         blurb: [],
         story: [],
         category: [],

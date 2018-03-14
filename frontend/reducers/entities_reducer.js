@@ -5,5 +5,5 @@ import projects from './projects_reducer';
 
 export default combineReducers({
   projects,
-  users,
+  users
 });

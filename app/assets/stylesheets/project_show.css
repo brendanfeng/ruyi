@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  max-width: 1400px;
   background-color: white;
   margin-bottom: 40px;
 }
@@ -16,7 +17,7 @@
 
 .project-show-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: inherit;
   flex-grow: 1;
   height: 300px;
@@ -81,19 +82,21 @@
   display: flex;
   width: 100%;
   min-height: 400px;
-  justify-content: space-between;
+  justify-content: center;
   margin-bottom: 32px;
 }
 
 .project-show-image {
   min-width: 500px;
   max-height: 550px;
+  max-width: 850px;
 }
 
 .project-show-aside {
   display: flex;
   flex-direction: column;
   min-width: 236px;
+  max-width: 500px;
   flex-grow: 1;
   padding: 32px;
   justify-content: space-between;
@@ -136,6 +139,7 @@
   font-size: 16px;
   width: 100%;
   text-align: center;
+  margin-top: 16px;
 }
 
 .edit-button:hover {
@@ -154,10 +158,12 @@
   padding: 24px 0;
   width: 100%;
   display: flex;
+  justify-content: center;
   min-height: 300px;
 }
 
 .project-show-story {
+  max-width: 1000px;
   flex-grow: 1;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -168,6 +174,9 @@
 }
 
 .project-backing-options {
+  min-width: 300px;
   width: 300px;
+  max-width: 350px;
+  flex-grow: 1;
   border: 1px solid black;
 }

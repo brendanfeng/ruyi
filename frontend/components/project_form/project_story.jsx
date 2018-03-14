@@ -5,29 +5,6 @@ import ReactQuill from 'react-quill';
 export default class ProjectStory extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      title: '',
-      blurb: '',
-      img_url: '',
-      story: '',
-      category: 'Design & Tech',
-      pledged_amount: 0,
-      goal: 100,
-      creator_id: -1
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  componentDidMount () {
-    this.setState(this.props.currentProject);
-  }
-
-  componentWillReceiveProps (newProps) {
-    this.setState(newProps.currentProject);
-  }
-
-  handleChange(html) {
-    this.setState({ story: html });
   }
 
   render() {
@@ -61,8 +38,8 @@ export default class ProjectStory extends React.Component {
           <div className="project-form-story">
             <ReactQuill
               theme="snow"
-              value={this.state.story}
-              onChange={this.handleChange}
+              value={this.props.story}
+              onChange={this.props.handleChange}
               modules={ quillModules }
               placeholder="Make your case..."
             />
@@ -70,9 +47,5 @@ export default class ProjectStory extends React.Component {
         </form>
       </div>
     );
-  }
-
-  componentWillUnmount() {
-    this.props.updateCurrentProject(Object.assign({}, this.state));
   }
 }

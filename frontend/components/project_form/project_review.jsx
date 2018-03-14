@@ -6,32 +6,6 @@ import ProjectShow from '../projects/project_show';
 export default class ProjectReview extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      title: '',
-      blurb: '',
-      img_url: '',
-      story: '',
-      category: 'Design & Tech',
-      pledged_amount: 0,
-      goal: 100,
-      creator_id: -1
-    };
-    this.publishProject = this.publishProject.bind(this);
-  }
-
-  componentDidMount () {
-    this.setState(this.props.currentProject);
-  }
-
-  componentWillReceiveProps (newProps) {
-    this.setState(newProps.currentProject);
-  }
-
-  publishProject (e) {
-    e.preventDefault();
-    this.setState({public: true});
-    this.props.updateCurrentProject(Object.assign({}, this.state));
-    this.props.submitForm();
   }
 
   renderErrors() {
@@ -46,16 +20,25 @@ export default class ProjectReview extends React.Component {
     );
   }
 
+  renderPublishButton () {
+    if (!this.props.currentProject.public) {
+      return (
+        <button className="publish" onClick={this.props.submitForm}>
+          <i className="material-icons">present_to_all</i>
+          Publish Project
+        </button>
+      );
+    }
+  }
+
   renderDeleteButton () {
     if (this.props.formType === "edit your project") {
       return (
-        <button className="delete-button" id='delete'>
+        <button className="delete-button">
           <i className="material-icons">delete_forever</i>
           Delete Project
         </button>
       );
-    } else {
-      return <div></div>;
     }
   }
 
@@ -65,12 +48,12 @@ export default class ProjectReview extends React.Component {
         <div className="project-child-container">
           <header className="project-child-header">
             <p className="project-child-greeting">
-              Share with the world!
+              Make your pitch!
             </p>
             <p className="project-child-description">
-              Check out how your project looks in the preview below. You
-              can save it to edit later, or if you think it's ready,
-              publish the project so you can start fundraising.
+              Check out project in the preview below. If you're happy
+              with how it looks, share it with everyone else! Otherwise,
+              go to the other tabs to keep working.
             </p>
           </header>
           <div className="project-submit-buttons">
@@ -78,29 +61,25 @@ export default class ProjectReview extends React.Component {
               <i className="material-icons">update</i>
               Save Details
             </button>
-            <button className="publish" onClick={this.publishProject}>
-              <i className="material-icons">present_to_all</i>
-              Publish Project
-            </button>
+            {this.renderPublishButton()}
             {this.renderDeleteButton()}
           </div>
           <div className="project-errors">{this.renderErrors()}</div>
         </div>
         <ProjectShow
           projId={this.props.currentProject.id}
-          project={this.state}
+          project={this.props.currentProject}
           currentUser={ this.props.currentUser }
           creator={ {username: this.props.currentUser.username} }
           fetchProject={ (id) => console.log(id) }>
         </ProjectShow>
         <div>
-
         </div>
       </div>
     );
   }
 
-  componentWillUnmount() {
-    this.props.updateCurrentProject(Object.assign({}, this.state));
+  componentWillUnmount () {
+    this.props.clearErrors();
   }
 }

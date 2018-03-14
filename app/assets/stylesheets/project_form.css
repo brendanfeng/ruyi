@@ -4,6 +4,7 @@
   align-items: center;
   background-color: #f0f0f0;
   min-width: 1000px;
+  width: 100%;
 }
 
 .project-form-box {
@@ -67,6 +68,7 @@
   display: flex;
   flex-direction: column;
   background: white;
+  border: 1px solid #dddded
 }
 
 .project-child-form label:first-of-type {
@@ -136,7 +138,7 @@
 .project-image-widget button {
   height: 24px;
   font-size: 16px;
-  border: 1px solid #dddedd;
+  border: 1px solid #dddded;
 }
 
 .project-image-widget button:focus {
@@ -152,7 +154,7 @@
 .project-category-dropdown {
   font-size: 16px;
   background-color: white;
-  border: 1px solid #dddedd;
+  border: 1px solid #dddded;
   border-radius: 0px;
 }
 
@@ -166,7 +168,7 @@
 
 .project-submit-buttons {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .project-submit-buttons i {
@@ -191,6 +193,10 @@
   box-shadow: 1px 1px #282828;
 }
 
+.save-details:focus {
+  outline: 1px solid #009e74;
+}
+
 .publish {
   padding: 10px;
   font-size: 20px;
@@ -202,6 +208,10 @@
 .publish:hover {
   background-color: #037362;
   cursor: pointer;
+}
+
+.publish:focus {
+  outline: 1px solid #009e74;
 }
 
 .delete-button {
@@ -221,6 +231,11 @@
   box-shadow: 1px 1px rgb(255,69,0);
 }
 
+.delete-button:focus {
+  outline: 1px solid rgb(255,69,0);
+}
+
 .project-errors {
   text-align: center;
+  margin-top: 10px;
 }

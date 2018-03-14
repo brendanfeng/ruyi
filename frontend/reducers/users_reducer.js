@@ -10,15 +10,17 @@ const usersReducer = (state = {}, action) => {
   switch(action.type) {
     case RECEIVE_PROJECT:
       return merge(
-        {},
+        {}, state,
         {[action.payload.creator.id]: action.payload.creator}
       );
     case RECEIVE_USER:
       return merge(
-        {},
+        {}, state,
         {[action.user.id]: action.user}
       );
     default:
       return state;
   }
 };
+
+export default usersReducer;

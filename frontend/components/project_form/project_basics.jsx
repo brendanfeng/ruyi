@@ -5,48 +5,10 @@ import { Image, Transformation } from 'cloudinary-react';
 export default class ProjectBasics extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      title: '',
-      blurb: '',
-      img_url: '',
-      story: '',
-      category: 'Design & Tech',
-      pledged_amount: 0,
-      goal: 100,
-      creator_id: -1
-    };
-    this.handleUpload = this.handleUpload.bind(this);
-  }
-
-  componentDidMount () {
-    this.setState(this.props.currentProject);
-  }
-
-  componentWillReceiveProps (newProps) {
-    this.setState(newProps.currentProject);
-  }
-
-  update(field) {
-    return e => this.setState({
-      [field]: e.currentTarget.value
-    });
-  }
-
-  handleUpload(e) {
-    e.preventDefault();
-    cloudinary.openUploadWidget(
-    {upload_preset: "blqvznu6",
-      multiple: false,
-      client_allowed_formats: ["png","gif", "jpeg"]},
-    (error, result) => {
-      if (error === null) {
-        this.setState({img_url: result[0].public_id,
-        uploadedfile: result[0].original_filename});
-      }}
-    );
   }
 
   render() {
+    const {title, blurb, category, uploadedfile, goal} = this.props.currentProject;
     return (
       <div className="project-child-container">
         <header className="project-child-header">
@@ -65,8 +27,8 @@ export default class ProjectBasics extends React.Component {
             <div className="project-title-field">
               <input type="text"
                 maxLength="60"
-                onChange={this.update('title')}
-                value={this.state.title}>
+                onChange={this.props.update('title')}
+                value={title}>
               </input>
               <p>
                 Your title expresses your project,
@@ -79,8 +41,8 @@ export default class ProjectBasics extends React.Component {
             <span>Short Blurb</span>
             <div>
               <textarea maxLength="130"
-                onChange={this.update('blurb')}
-                value={this.state.blurb}></textarea>
+                onChange={this.props.update('blurb')}
+                value={blurb}></textarea>
               <p>
                 Give people a sense of what you’re doing.
                 Skip “Help me” and focus on what you’re making.
@@ -91,8 +53,8 @@ export default class ProjectBasics extends React.Component {
           <label className="project-image-upload">
             <span>Project Image</span>
             <div className="project-image-widget">
-              <button onClick={this.handleUpload}>Upload Image</button>
-              <p className="image-filename">{this.state.uploadedfile || ""}</p>
+              <button onClick={this.props.handleUpload}>Upload Image</button>
+              <p className="image-filename">{uploadedfile || ""}</p>
               <p>This is the first thing that people will see when they come
                 across your project.
                 Choose an image that’s crisp and text-free.</p>
@@ -100,7 +62,8 @@ export default class ProjectBasics extends React.Component {
           </label>
           <label className="project-category">
             <span>Category</span>
-          <select className="project-category-dropdown" value={this.state.category} onChange={this.update('category')}>
+          <select className="project-category-dropdown" value={category}
+            onChange={this.props.update('category')}>
             <option value="Design & Tech">Design & Tech</option>
             <option value="Arts">Arts</option>
             <option value="Music">Music</option>
@@ -114,7 +77,8 @@ export default class ProjectBasics extends React.Component {
           <label className="project-goal">
             <span>Fundraising Goal ($)</span>
             <div>
-              <input type="number" onChange={this.update('goal')} value={this.state.goal}></input>
+              <input type="number" onChange={this.props.update('goal')}
+                value={goal}></input>
               <p>
                 Funding on RuYi is all-or-nothing.
                 It’s okay to raise more than your goal,
@@ -128,9 +92,5 @@ export default class ProjectBasics extends React.Component {
         </form>
       </div>
     );
-  }
-
-  componentWillUnmount() {
-    this.props.updateCurrentProject(Object.assign({}, this.state));
   }
 }

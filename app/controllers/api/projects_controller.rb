@@ -42,15 +42,21 @@ class Api::ProjectsController < ApplicationController
   end
 
   def fetch_by_category
-    @projects = Project.where(category: params[:category]).order(created_at: :asc).limit(5)
-    render :search
+    @projects = Project.where(category: params[:category]).order(created_at: :asc).limit(4)
+    @users = User.where('id IN ?', @projects.pluck(:creator_id))
+    render :index
+  end
+
+  def search_projects
+    @projects = Project.search_projects(params[:query]).where(public: true)
+    render :index
   end
 
   private
 
   def project_params
     params.require(:project).permit(
-      :title, :img_url, :blurb, :story, :category, :goal, :pledge_amount, :public, :creator_id
+      :title, :img_url, :blurb, :story, :category, :goal, :pledged_amount, :public, :creator_id
     )
   end
 
