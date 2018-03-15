@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import ProjectsCategoryIndex from './category_index';
 
 export default class Homepage extends React.Component {
   constructor(props) {
@@ -55,18 +56,11 @@ export default class Homepage extends React.Component {
         </div>
         <section className="homepage-header-outer"></section>
       </header>
-      <nav className="category-tags-nav">
-        <button className="category-tag">Games</button>
-        <button className="category-tag">Food & Craft</button>
-        <button className="category-tag">Design & Tech</button>
-        <button className="category-tag">Film</button>
-        <button className="category-tag">Publishing</button>
-        <button className="category-tag">Arts</button>
-        <button className="category-tag">Music</button>
-        <button className="category-tag">Comics & Illustration</button>
-      </nav>
-
-
+      <ProjectsCategoryIndex
+        projects={this.props.projects}
+        creators={this.props.creators}
+        fetchIndex={this.props.fetchIndex}
+        />
     </div>
   );
   }

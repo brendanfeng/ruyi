@@ -94,7 +94,7 @@ export default class ProjectShow extends React.Component {
               />
           </div>
           <div className="project-backing-options">
-            PLEDGGGGGEEEEEE YOUR MONEY HERE!
+            Back this Project!
           </div>
         </section>
       </div>

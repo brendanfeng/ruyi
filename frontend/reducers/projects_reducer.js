@@ -9,6 +9,8 @@ import {
 const projectsReducer = (state ={}, action) => {
   Object.freeze(state);
   switch(action.type) {
+    case RECEIVE_INDEX:
+      return merge({}, action.projects);
     case RECEIVE_PROJECT:
       return merge(
         {},
