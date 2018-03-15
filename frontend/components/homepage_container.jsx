@@ -2,7 +2,8 @@ import {connect} from 'react-redux';
 import React from 'react';
 
 import Homepage from './homepage';
-import { fetchIndex, fetchHeader } from '../actions/project_actions';
+import { fetchIndex } from '../actions/project_actions';
+import { fetchHeader } from '../actions/ui_actions';
 
 const mapStateToProps = (state) => {
   return {
