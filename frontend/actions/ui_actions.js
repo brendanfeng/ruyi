@@ -1,11 +1,13 @@
-import APIUtil from '../util/ui_util'
+import * as APIUtil from '../util/ui_util';
 
 export const RECEIVE_HEADER = "RECEIVE_HEADER";
 
-export const receiveHeader = (indexHeader) => {
+export const receiveHeader = ({publicCount, usersCount, fundedCount}) => {
   return {
     type: RECEIVE_HEADER,
-    indexHeader
+    publicCount,
+    usersCount,
+    fundedCount,
   };
 };
 

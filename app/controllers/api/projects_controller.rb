@@ -49,9 +49,10 @@ class Api::ProjectsController < ApplicationController
   end
 
   def fetch_header
-    @public_count = Project.count(conditions: "public = true")
+    @public_count = Project.where("public = true").count
     @users_count = User.count
-    @funded_count = Project.count(conditions: "pledged_amount >= goal")
+    @funded_count = Project.where("pledged_amount >= goal").count
+    render :header
   end
 
   def search_projects
