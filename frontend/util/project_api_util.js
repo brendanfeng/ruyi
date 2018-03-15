@@ -27,3 +27,10 @@ export const deleteProject = (id) => {
     url: `/api/projects/${id}`
   });
 };
+
+export const fetchIndex = (category) => {
+  return $.ajax({
+    method: "GET",
+    url: `/api/homepage/${category}`,
+  });
+};

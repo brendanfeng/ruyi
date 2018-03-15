@@ -6,7 +6,8 @@ Rails.application.routes.draw do
     resources :projects, except: [:edit, :new]
   end
 
-  get "/api/root_view/:category", to: "api/projects/#fetch_by_category"
+  get "/api/homepage/:category", to: "api/projects#fetch_index", defaults: {format: :json}
+  get "/api/header", to: "api/projects#fetch_header", defaults: {format: :json}
 
   root "static_pages#root"
 end

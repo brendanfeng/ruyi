@@ -3,6 +3,15 @@ import * as APIUtil from '../util/project_api_util';
 export const RECEIVE_PROJECT = 'RECEIVE_PROJECT';
 export const REMOVE_PROJECT = 'REMOVE_PROJECT';
 export const RECEIVE_PROJECT_ERRORS = 'RECEIVE_PROJECT_ERRORS';
+export const RECEIVE_INDEX = 'RECEIVE_INDEX';
+
+export const receiveIndex = (payload) => {
+return {
+  type: RECEIVE_INDEX,
+  projects: payload.projects,
+  users: payload.users
+  };
+};
 
 export const receiveProject = (payload) => {
   return {
@@ -23,6 +32,14 @@ export const receiveErrors = errors => {
     type: RECEIVE_PROJECT_ERRORS,
     errors
   };
+};
+
+export const fetchIndex = (category) => dispatch => {
+  return APIUtil.fetchIndex(category).then(payload => {
+    return dispatch(receiveIndex(payload));
+  }, err => {
+    return dispatch(receiveErrors(err.responseJSON));
+  });
 };
 
 export const fetchProject = id => dispatch => {

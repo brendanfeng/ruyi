@@ -1,26 +1,19 @@
 import {
-  UPDATE_CURRENT_PROJECT
+  RECEIVE_HEADER
 } from '../actions/ui_actions';
 
 import { merge } from 'lodash';
 
-const _defaultState = {currentProject: {
-  title: '',
-  img_url: '',
-  blurb: '',
-  category: 'Design & Tech',
-  story: '',
-  goal: 100,
-  pledged_amount: 0,
-  public: false
-}};
+const _defaultState = {};
 
 const uiReducer = (state = _defaultState, action) => {
-
   Object.freeze(state);
   switch(action.type) {
-    case UPDATE_CURRENT_PROJECT:
-      return merge({}, state, {currentProject: action.currentProject});
+    case RECEIVE_HEADER:
+      const publicCount = action.indexHeader.publicCount;
+      const usersCount = action.indexHeader.usersCount;
+      const fundedCount = action.indexHeader.fundedCount;
+      return merge({}, state, {indexHeader: {publicCount, usersCount, fundedCount}});
     default:
       return state;
   }

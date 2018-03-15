@@ -41,15 +41,22 @@ class Api::ProjectsController < ApplicationController
     end
   end
 
-  def fetch_by_category
+  def fetch_index
     @projects = Project.where(category: params[:category]).order(created_at: :asc).limit(4)
-    @users = User.where('id IN ?', @projects.pluck(:creator_id))
+    @projects.pluck(:creator_id)
+    @users = User.where('id IN (?)', @projects.pluck(:creator_id))
     render :index
+  end
+
+  def fetch_header
+    @public_count = Project.count(conditions: "public = true")
+    @users_count = User.count
+    @funded_count = Project.count(conditions: "pledged_amount >= goal")
   end
 
   def search_projects
     @projects = Project.search_projects(params[:query]).where(public: true)
-    render :index
+    render :search
   end
 
   private

@@ -2,6 +2,7 @@ import { merge } from 'lodash';
 
 import {
   RECEIVE_PROJECT_ERRORS,
+  RECEIVE_INDEX,
   RECEIVE_PROJECT,
   REMOVE_PROJECT,
 } from '../actions/project_actions';
@@ -32,6 +33,7 @@ export default (state = _defaultState, action) => {
       );
     case RECEIVE_PROJECT:
     case REMOVE_PROJECT:
+    case RECEIVE_INDEX:
       return {
         title: [],
         image: [],

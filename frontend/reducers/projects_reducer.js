@@ -3,6 +3,7 @@ import { merge } from 'lodash';
 import {
   RECEIVE_PROJECT,
   REMOVE_PROJECT,
+  RECEIVE_INDEX,
 } from '../actions/project_actions';
 
 const projectsReducer = (state ={}, action) => {

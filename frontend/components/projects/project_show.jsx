@@ -12,7 +12,7 @@ export default class ProjectShow extends React.Component {
   }
 
   componentDidMount() {
-    if (!this.props.project) return this.props.fetchProject(this.props.projId);
+    this.props.fetchProject(this.props.projId);
   }
 
   renderEditButton () {

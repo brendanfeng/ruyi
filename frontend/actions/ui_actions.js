@@ -1,8 +1,10 @@
-export const UPDATE_CURRENT_PROJECT = "UPDATE_CURRENT_PROJECT";
+export const RECEIVE_HEADER = "RECEIVE_HEADER";
 
-export const updateCurrentProject = (currentProject) => {
+export const receiveHeader = (indexHeader) => {
   return {
-    type: UPDATE_CURRENT_PROJECT,
-    currentProject
+    type: RECEIVE_HEADER,
+    indexHeader
   };
 };
+
+export const
