@@ -1,24 +1,14 @@
-# README
+# RuYi - As You Desire
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+RuYi is a Kickstarter Clone, where users can create projects and support projects
+that they want to see made. The projects show off a new product or a service
+that the creator wants to finance. RuYi draws these like-minded people together
+so the community can benefit from the talents of our members.
 
-Things you may want to cover:
+[Live Site Here](http://ruyi.herokuapp.com)
+![](app/...INSERT SCREENSHOT OF INDEX HERE)
 
-* Ruby version
+## Usage
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Creating a project is easy - you only need to
+take advantage of the many functionalities in the form.
