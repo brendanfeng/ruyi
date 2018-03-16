@@ -92,6 +92,10 @@
   max-width: 850px;
 }
 
+.project-show-image img {
+  max-width: 100%;
+}
+
 .project-show-aside {
   display: flex;
   flex-direction: column;

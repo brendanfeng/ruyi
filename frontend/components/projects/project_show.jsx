@@ -2,13 +2,17 @@ import React from 'react';
 import ReactQuill from 'react-quill';
 import {Redirect, Link} from 'react-router-dom';
 import { Image, Transformation } from 'cloudinary-react';
+import { merge } from 'lodash';
 
 export default class ProjectShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      project: null
+      project: null,
+      pledged_amount: this.props.project.pledged_amount
     };
+    this.handlePledge = this.handlePledge.bind(this);
+    this.setPledge = this.setPledge.bind(this);
   }
 
   componentDidMount() {
@@ -20,6 +24,34 @@ export default class ProjectShow extends React.Component {
       return (
         <Link to={`/projects/update/${this.props.projId}/basics`}
           className="edit-button">Edit Project</Link>
+      );
+    } else {
+      return (<div></div>);
+    }
+  }
+
+  setPledge(e) {
+    this.setState({pledged_amount: e.currentTarget.value});
+  }
+
+  handlePledge(e) {
+    e.preventDefault();
+    const newPledge = merge({}, this.props.project, {pledged_amount: this.state.pledged_amount});
+    // NEEDS DISPATCH ACTION HERE
+  }
+
+  renderPledgeButton() {
+    if (this.props.project.creator_id && this.props.currentUser.id !== this.props.project.creator_id) {
+      return (
+        <form>
+          <input type="number" onChange={this.setPledge}
+            value={this.state.pledged_amount}
+            className="pledge-button">
+          </input>
+          <button onClick={this.handlePledge}>
+            Back Project
+          </button>
+        </form>
       );
     } else {
       return (<div></div>);
@@ -94,7 +126,7 @@ export default class ProjectShow extends React.Component {
               />
           </div>
           <div className="project-backing-options">
-            Back this Project!
+            {this.renderPledgeButton()}
           </div>
         </section>
       </div>

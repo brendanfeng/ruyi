@@ -1,0 +1,28 @@
+.app-footer {
+  display: flex;
+  width: 100%;
+  align-items:center;
+  border-top: 1px solid #282828;
+  padding: 8px 0;
+  justify-content: space-between;
+}
+
+.author-tag {
+  margin-left: 25px;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.social-logos img {
+  width: 50px;
+  height: 50px;
+  margin-left: 25px;
+}
+
+.social-logos:last-child {
+  margin-right: 25px;
+}
+
+.social-logos:hover {
+  opacity: 0.8;
+}

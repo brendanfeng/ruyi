@@ -1,20 +1,18 @@
 import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import { Image, Transformation } from 'cloudinary-react';
 import { isEmpty } from 'lodash';
 
 import ProjectsCategoryItem from './category_index_item';
 
-export default class ProjectsCategoryIndex extends React.Component {
+class ProjectsCategoryIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       category: "Design & Tech"
     };
     this.selectTab = this.selectTab.bind(this);
-  }
-
-  componentWillReceiveProps (nextProps) {
-
+    this.goToShow = this.goToShow.bind(this);
   }
 
   selectTab (e) {
@@ -22,6 +20,10 @@ export default class ProjectsCategoryIndex extends React.Component {
       this.props.fetchIndex(e.currentTarget.innerText).then(
       this.setState({category: e.currentTarget.innerText}));
     }
+  }
+
+  goToShow(id) {
+    this.props.history.push(`projects/show/${id}`);
   }
 
   render () {
@@ -48,29 +50,40 @@ export default class ProjectsCategoryIndex extends React.Component {
           )}
         </nav>
         <div className="category-index-view">
-          <p className="category-title">{this.state.category}</p>
+          <div className="category-title">
+            <span>{this.state.category}</span>
+            <Link to={`/discover/${this.state.category}`}>
+              View All <i className="material-icons">trending_flat</i>
+            </Link>
+          </div>
           <div className="category-projects-container">
-            <div className="featured-project">
+            <div className="featured-project" onClick={() => this.goToShow(featured.id)}>
               <Image publicId={featured.img_url}>
                 <Transformation quality="auto:eco" fetchFormat="auto" />
                 <Transformation width="650" height="650" crop="lfill" gravity="center" />
               </Image>
-              <p className="project-feature-title">
-                {featured.title}
-              </p>
-              <p className="project-feature-creator">
-                By {this.props.creators[featured.creator_id].username}
-              </p>
-              <p className="project-feature-count">
-                {Math.floor(featured.pledged_amount / featured.goal * 100)}% funded
-              </p>
+              <div className="project-feature-info">
+                <p className="project-feature-title">
+                  {featured.title}
+                </p>
+                <p className="project-feature-creator">
+                  By {this.props.creators[featured.creator_id].username}
+                </p>
+                <div className="project-feature-container">
+                  <p className="project-feature-funded">
+                    {Math.floor(featured.pledged_amount / featured.goal * 100)}% funded
+                  </p>
+                </div>
+              </div>
             </div>
             <div className="category-projects-list">
               {this.props.projects.slice(1).map( (proj) => {
                 return <ProjectsCategoryItem
+                  id={proj.id}
                   title={proj.title}
                   image={proj.img_url}
                   funded={Math.floor(proj.pledged_amount / proj.goal * 100)}
+                  goToShow={this.goToShow}
                   key={proj.id} />;
                 }
               )}
@@ -82,6 +95,6 @@ export default class ProjectsCategoryIndex extends React.Component {
     }
 
 
-
-
 }
+
+export default withRouter(ProjectsCategoryIndex);

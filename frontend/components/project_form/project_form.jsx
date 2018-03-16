@@ -18,7 +18,7 @@ export default class ProjectForm extends React.Component {
       pledged_amount: 0,
       goal: 100,
       public: false,
-      creator_id: -1
+      creator_id: null
     };
     this.state = props.currentProject || _default;
     this.submitForm = this.submitForm.bind(this);

@@ -73,8 +73,6 @@ export default class ProjectReview extends React.Component {
           creator={ {username: this.props.currentUser.username} }
           fetchProject={ (id) => console.log(id) }>
         </ProjectShow>
-        <div>
-        </div>
       </div>
     );
   }
