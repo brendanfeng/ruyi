@@ -51,6 +51,7 @@ group :development do
   gem 'better_errors'
   gem 'annotate'
   gem 'pry-rails'
+  gem 'seed_dump'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

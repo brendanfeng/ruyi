@@ -63,12 +63,16 @@ class ProjectsCategoryIndex extends React.Component {
                 <Transformation width="650" height="650" crop="lfill" gravity="center" />
               </Image>
               <div className="project-feature-info">
+                <div className="project-title-div">
                 <p className="project-feature-title">
                   {featured.title}
                 </p>
+              </div>
+                <div>
                 <p className="project-feature-creator">
                   By {this.props.creators[featured.creator_id].username}
                 </p>
+              </div>
                 <div className="project-feature-container">
                   <p className="project-feature-funded">
                     {Math.floor(featured.pledged_amount / featured.goal * 100)}% funded
