@@ -9,14 +9,16 @@ export default class ProjectShow extends React.Component {
     super(props);
     this.state = {
       project: null,
-      pledged_amount: this.props.project.pledged_amount
+      pledged_amount: 0
     };
     this.handlePledge = this.handlePledge.bind(this);
     this.setPledge = this.setPledge.bind(this);
   }
 
   componentDidMount() {
-    this.props.fetchProject(this.props.projId);
+    this.props.fetchProject(this.props.projId).then(res => {
+    return this.setState({pledged_amount: res.payload.project.pledged_amount});
+    });
   }
 
   renderEditButton () {

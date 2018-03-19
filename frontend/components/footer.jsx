@@ -4,9 +4,12 @@ import { Image } from 'cloudinary-react';
 const Footer = () => {
   return (
     <footer className="app-footer">
-      <div className="author-tag">Made by Brendan Feng, Inspired by Kickstarter</div>
+      <div className="author-tag">
+        Made by <a href="https://www.brendanfeng.com">Brendan Feng</a>,
+        Inspired by <a href="https://www.kickstarter.com">Kickstarter</a>
+      </div>
       <div className="rightside">
-        <a href="https://github.com/brendanfeng" className="social-logos">
+        <a href="https://github.com/brendanfeng/ruyi" className="social-logos">
           <Image publicId='https://res.cloudinary.com/ruyi/image/upload/v1521192941/GitHub-Mark-120px-plus'>
           </Image>
         </a>
