@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="app-footer">
       <div className="author-tag">
-        Made by <a href="https://www.brendanfeng.com">Brendan Feng</a>,
+        Made by <a href="http://www.brendanfeng.me">Brendan Feng</a>,
         Inspired by <a href="https://www.kickstarter.com">Kickstarter</a>
       </div>
       <div className="rightside">
