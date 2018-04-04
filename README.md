@@ -9,10 +9,8 @@ and a React/Redux frontend with jQuery handling AJAX requests.
 ## Features
 
 ## Viewing Featured Projects
-![](app/...INSERT GIF OF INDEX HERE)
+![](app/assets/images/ruyi.gif)
 ## Creating and Editing Projects
-![](app/...INSERT GIF OF FORMS HERE)
+![](app/assets/images/createprojectform.gif)
 ## Searching for Projects
 ![](app/...INSERT GIF OF SEARCH BAR HERE)
-## Backing projects
-![](app/...INSERT GIF OF SHOW PAGE)
