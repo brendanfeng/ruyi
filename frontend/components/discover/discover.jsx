@@ -1,4 +1,5 @@
 import React from 'react';
+import {isEmpty} from 'lodash'
 
 import DiscoverItem from './discover_item';
 
@@ -20,7 +21,6 @@ export default class Discover extends React.Component {
   }
 
   update(field) {
-    console.log(this.props);
     return e => {
       e.preventDefault();
       this.setState({
@@ -29,7 +29,8 @@ export default class Discover extends React.Component {
     };
   }
 
-  handleSearch() {
+  handleSearch(e) {
+    e.preventDefault();
     this.props.history.push(`/discover/${this.state.category}?${this.state.query}`);
     this.props.searchIndex({
       query: this.state.query, category: this.state.category
@@ -55,30 +56,28 @@ export default class Discover extends React.Component {
                 onChange={this.update('query')}
                 value={this.state.query}
               />
-              <span>in</span>
+              <span> in </span>
               <select className="discover-category-list"
                 value={this.state.category}
                 onChange={this.update('category')}>
-                <option className="discover-category"
-                value="all">All Categories</option>
-                {categories.map((cat, idx) => {
-                  return (
-                    <option className="discover-category"
-                      key={idx}
-                      value={cat}>
-                      {cat}
-                    </option>
-                  );
-                })}
+                <option value="all">All Categories</option>
+                <option value="Design & Tech">Design & Tech</option>
+                <option value="Arts">Arts</option>
+                <option value="Music">Music</option>
+                <option value="Comics & Illustration">Comics & Illustration</option>
+                <option value="Film">Film</option>
+                <option value="Games">Games</option>
+                <option value="Food & Craft">Food & Craft</option>
+                <option value="Publishing">Publishing</option>
               </select>
             </div>
             <div className="discover-search-button"
               onClick={this.handleSearch}>
-              <span>Find Projects</span>
+              <p>Find Projects</p>
             </div>
           </div>
           <div className="discover-projects-container">
-            <span>Discover {this.props.results.length} projects</span>
+            <span className="discover-count">Discover {this.props.results.length} projects</span>
             <div className="discover-projects-list">
               {this.props.results.map((projId) => {
                 return (

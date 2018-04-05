@@ -56,13 +56,19 @@ class Api::ProjectsController < ApplicationController
   end
 
   def search_projects
-    if params[:category] == "all"
-      @projects = Project.search_projects(params[:query])
+    cat, q = params[:category], params[:query]
+    if cat == "all" && q == ""
+      @projects = Project.all
+    elsif cat == "all"
+      @projects = Project.search_projects(q)
+      .where(public: true)
+    elsif q == ""
+      @projects = Project.where(category: cat)
       .where(public: true)
     else
-      @projects = Project.search_projects(params[:query])
+      @projects = Project.search_projects(q)
       .where(public: true)
-      .where(category: params[:category])
+      .where(category: cat)
     end
     creators = @projects.pluck(:creator_id)
     @users = User.where('id IN (?)', creators)

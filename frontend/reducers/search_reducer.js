@@ -8,7 +8,7 @@ const searchReducer = (state = [], action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_INDEX:
-      return merge([], state, action.ranks);
+      return merge([], action.ranks);
     default:
       return state;
   }

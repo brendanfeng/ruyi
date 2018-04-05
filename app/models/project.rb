@@ -2,7 +2,7 @@ class Project < ApplicationRecord
   include PgSearch
   pg_search_scope :search_projects,
   against: {title: 'B', blurb: 'C', category: 'A'},
-  using: {tsearch: {prefix: true}, trigram: {threshold: 0.3}},
+  using: {tsearch: {prefix: true}, trigram: {threshold: 0.5}},
   ranked_by: ":trigram"
 
   CATEGORIES = ["Comics & Illustration", "Film", "Games", "Food & Craft", "Arts", "Design & Tech", "Publishing", "Music"]

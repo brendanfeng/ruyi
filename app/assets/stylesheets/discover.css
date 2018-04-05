@@ -1,0 +1,149 @@
+.discover-container {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  min-height: 84vh;
+}
+
+.discover-header {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  padding: 3rem 0;
+  border-bottom: 1px solid #dcdeed;
+}
+
+.discover-search {
+  font-size: 20px;
+}
+
+.discover-search-bar {
+  height: 24px;
+  min-width: 300px;
+  font-size: 20px;
+  padding: 5px;
+  border: 1px solid #dddded;
+}
+
+.discover-search-bar:focus {
+  outline: 1px solid #009e74;
+}
+
+.discover-category-list {
+  min-width: 150px;
+  height: 36px;
+  font-size: 20px;
+  background-color: white;
+  border: 1px solid #dddded;
+  border-radius: 0px;
+}
+
+.discover-category-list:focus {
+  outline: 1px solid #009e74;
+}
+
+.discover-search-button {
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 18px;
+  color: white;
+  background-color: #009e74;
+  font-weight: 300;
+}
+
+.discover-search-button:hover {
+  background-color: #037362;
+  cursor: pointer;
+}
+
+.discover-search-button:focus {
+  outline: 1px solid #009e74;
+}
+
+.discover-projects-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  padding: 10px;
+}
+
+.discover-count {
+  font-size: 24px;
+  color: #009e74;
+  align-self: flex-start;
+}
+
+.discover-projects-list {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.discover-project-item {
+  display: flex;
+  flex-flow: column nowrap;
+  min-width: 400px;
+  width: 400px;
+  min-height: 550px;
+  height: 550px;
+  border: 1px solid #dddded;
+  margin: 15px;
+  justify-content: space-between;
+}
+
+.discover-item-top:hover img {
+  opacity: 0.8;
+}
+
+.discover-item-info:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.discover-item-info {
+  padding: 5px 20px 20px 20px;
+}
+
+.discover-item-title a {
+  color: #282828;
+  font-size: 22px;
+}
+
+.discover-item-blurb a {
+  color: #989e9e;
+  font-size: 20px;
+}
+
+.discover-item-creator {
+  padding: 0 20px 0 20px;
+}
+
+.discover-item-creator a {
+  color: #282828;
+  font-size: 16px;
+}
+
+/* .discover-item-creator:hover {
+  cursor: pointer;
+  text-decoration: underline;
+} */
+
+.discover-item-bottom {
+  padding: 20px;
+}
+
+.discover-item-percent {
+  color: #009e74;
+}
+
+.discover-item-category {
+  margin-top: 10px;
+}
+
+.discover-item-category a {
+  color: #282828;
+}
+
+.discover-item-category:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
