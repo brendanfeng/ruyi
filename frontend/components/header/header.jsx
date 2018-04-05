@@ -11,7 +11,7 @@ export default class Header extends React.Component {
       <header className="nav-container">
         <nav className="nav-left-container">
           <Link className="header-link"
-            to="/">Discover</Link>
+            to="/discover/all/">Discover</Link>
           <Link className="header-link"
             to="/projects/create/basics">Start Project</Link>
         </nav>

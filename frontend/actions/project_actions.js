@@ -6,17 +6,20 @@ export const RECEIVE_PROJECT_ERRORS = 'RECEIVE_PROJECT_ERRORS';
 export const RECEIVE_INDEX = 'RECEIVE_INDEX';
 
 export const receiveIndex = (payload) => {
+  console.log(payload)
 return {
   type: RECEIVE_INDEX,
   projects: payload.projects,
-  users: payload.users
+  users: payload.users,
+  ranks: payload.ranks
   };
 };
 
 export const receiveProject = (payload) => {
   return {
     type: RECEIVE_PROJECT,
-    payload
+    project: payload.project,
+    creator: payload.creator
   };
 };
 
@@ -36,6 +39,14 @@ export const receiveErrors = errors => {
 
 export const fetchIndex = (category) => dispatch => {
   return APIUtil.fetchIndex(category).then(payload => {
+    return dispatch(receiveIndex(payload));
+  }, err => {
+    return dispatch(receiveErrors(err.responseJSON));
+  });
+};
+
+export const searchIndex = (query) => dispatch => {
+  return APIUtil.searchIndex(query).then(payload => {
     return dispatch(receiveIndex(payload));
   }, err => {
     return dispatch(receiveErrors(err.responseJSON));

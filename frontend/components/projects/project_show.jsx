@@ -16,9 +16,13 @@ export default class ProjectShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchProject(this.props.projId).then(res => {
-    return this.setState({pledged_amount: res.payload.project.pledged_amount});
-    });
+    if (this.props.fetchProject) {
+      this.props.fetchProject(this.props.projId).then(res => {
+        return this.setState({
+          pledged_amount: res.project.pledged_amount
+        });
+      });
+    }
   }
 
   renderEditButton () {
@@ -77,7 +81,9 @@ export default class ProjectShow extends React.Component {
     }
     const {title, blurb, img_url, category, story, goal, pledged_amount}
      = this.props.project;
-    const statusWidth = Math.floor((pledged_amount / goal) * 100);
+    let statusWidth = Math.floor((pledged_amount / goal) * 100);
+    if (statusWidth > 100) statusWidth = 100;
+    if (!statusWidth) statusWidth = 0;
     return (
       <div className="project-show-container">
         {this.privateMessage()}

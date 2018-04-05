@@ -58,6 +58,7 @@ class ProjectsCategoryIndex extends React.Component {
           </div>
           <div className="category-projects-container">
             <div className="featured-project" onClick={() => this.goToShow(featured.id)}>
+              <span className="category-projects-head">FEATURED PROJECT</span>
               <Image publicId={featured.img_url}>
                 <Transformation quality="auto:eco" fetchFormat="auto" />
                 <Transformation width="650" height="650" crop="lfill" gravity="center" />
@@ -81,6 +82,7 @@ class ProjectsCategoryIndex extends React.Component {
               </div>
             </div>
             <div className="category-projects-list">
+              <span className="category-projects-head">NEW & NOTEWORTHY</span>
               {this.props.projects.slice(1).map( (proj) => {
                 return <ProjectsCategoryItem
                   id={proj.id}

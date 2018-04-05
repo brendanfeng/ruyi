@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get "/api/homepage/:category", to: "api/projects#fetch_index", defaults: {format: :json}
   get "/api/header", to: "api/projects#fetch_header", defaults: {format: :json}
+  get "/api/search", to: "api/projects#search_projects", defaults: {format: :json}
 
   root "static_pages#root"
 end

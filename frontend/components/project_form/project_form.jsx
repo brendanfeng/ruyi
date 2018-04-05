@@ -59,7 +59,7 @@ export default class ProjectForm extends React.Component {
     }
     this.props.processForm(formProject)
     .then((action) => {
-      return this.props.history.push(`/projects/show/${action.payload.project.id}`);
+      return this.props.history.push(`/projects/show/${action.project.id}`);
     });
   }
 

@@ -43,8 +43,8 @@ class Api::ProjectsController < ApplicationController
 
   def fetch_index
     @projects = Project.where(category: params[:category]).order(created_at: :asc).limit(4)
-    @projects.pluck(:creator_id)
-    @users = User.where('id IN (?)', @projects.pluck(:creator_id))
+    creators = @projects.pluck(:creator_id)
+    @users = User.where('id IN (?)', creators)
     render :index
   end
 
@@ -56,8 +56,22 @@ class Api::ProjectsController < ApplicationController
   end
 
   def search_projects
-    @projects = Project.search_projects(params[:query]).where(public: true)
-    render :search
+    if params[:category] == "all"
+      @projects = Project.search_projects(params[:query])
+      .where(public: true)
+    else
+      @projects = Project.search_projects(params[:query])
+      .where(public: true)
+      .where(category: params[:category])
+    end
+    creators = @projects.pluck(:creator_id)
+    @users = User.where('id IN (?)', creators)
+    render :index
+  end
+
+  def limited_search_projects
+    @projects = Project.search_projects(params[:query]).where(public: true).limit(4)
+    render :index
   end
 
   private

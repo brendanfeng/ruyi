@@ -6,6 +6,7 @@
   height: 66px;
   border-bottom: 1px solid #282828;
   min-width: 700px;
+  width: 100%;
 }
 
 .nav-left-container {

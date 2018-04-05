@@ -6,7 +6,7 @@ import {
   RECEIVE_INDEX,
 } from '../actions/project_actions';
 
-const projectsReducer = (state ={}, action) => {
+const projectsReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_INDEX:
@@ -14,7 +14,7 @@ const projectsReducer = (state ={}, action) => {
     case RECEIVE_PROJECT:
       return merge(
         {},
-        {[action.payload.project.id]: action.payload.project}
+        {[action.project.id]: action.project}
       );
     case REMOVE_PROJECT:
       const newState = merge({}, state);

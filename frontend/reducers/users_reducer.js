@@ -12,7 +12,7 @@ const usersReducer = (state = {}, action) => {
     case RECEIVE_PROJECT:
       return merge(
         {}, state,
-        {[action.payload.creator.id]: action.payload.creator}
+        {[action.creator.id]: action.creator}
       );
     case RECEIVE_INDEX:
       return merge({}, action.users);

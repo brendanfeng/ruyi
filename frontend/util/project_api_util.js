@@ -34,3 +34,11 @@ export const fetchIndex = (category) => {
     url: `/api/homepage/${category}`,
   });
 };
+
+export const searchIndex = ({query, category}) => {
+  return $.ajax({
+    method: "GET",
+    url: `/api/search`,
+    data: { query, category }
+  });
+};

@@ -71,7 +71,7 @@ export default class ProjectReview extends React.Component {
           project={this.props.currentProject}
           currentUser={ this.props.currentUser }
           creator={ {username: this.props.currentUser.username} }
-          fetchProject={ (id) => console.log(id) }>
+          fetchProject={ null }>
         </ProjectShow>
       </div>
     );
