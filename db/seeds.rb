@@ -1,3 +1,13 @@
+User.create!([
+  {username: "user", password_digest: "$2a$10$061HWAnCEm00ZU7748KqZO3WRdS5LFY.nxh0PiwPkRI8JLh9cv9x.", session_token: "Mvw8TIH6A29q5gZ2J9JdKw"},
+  {username: "DarrenBuffet", password_digest: "$2a$10$gzF1H9dN7LxhGpBbcNKIfOlIH3A11M2AdDE7knFQGTsdBSs9FH4GW", session_token: "P6b68EHjYvZAqerv-N71Wg"},
+  {username: "brendan", password_digest: "$2a$10$YA3/vP882DlEBp9n/H1ycOJlIGpEIbRl8N33XegMwiCWwuAUU9Nsq", session_token: "IaZCf2pC5vvGCuXMe9xK2w"},
+  {username: "BobGates", password_digest: "$2a$10$2qE5.1UTKZm6oG5535qmD.R94.wd/KJIZkZ7J.3/7KiGEYEQWMJd6", session_token: "8vUBS-_zCvHszrAnarGWWw"},
+  {username: "TommyFiddle", password_digest: "$2a$10$MP2DiSFSsgiDjWEDVPowhOn.z3oMu111TWgzgVF3dsICkpuyT4yt.", session_token: "f0K6yRvxqgnYZ4oAGdlZkw"},
+  {username: "StanJobs", password_digest: "$2a$10$8nreGFXDaSRN32ElTKsQyu1vrIGTqyNt.0FnZJe.oa53R6gizBAW.", session_token: "euhLG6vkpYn-suuYJPlB1w"},
+  {username: "DaWoz", password_digest: "$2a$10$X9Na8UpHDAo9TRVa2G6jUet8EXp0I715HolYVjJrDxFWusi0nQVCa", session_token: "ndG3VUGpPdoh-SknCrQuOQ"},
+  ])
+
 Project.create!([
   {title: "The smartest AI known to mankind AKA AlphaNegativeOne", img_url: "alex-knight-199368-unsplash_zgdzzz", blurb: "AlphaNegativeOne will blow open the world of AI like negative numbers blew open mathematics", story: "<p>I don't need a story - machine learning is the answer</p>", category: "Design & Tech", goal: 900000, pledged_amount: 0, public: true, creator_id: User.second.id},
   {title: "Supreme is the bestest", img_url: "sergey-fediv-218856-unsplash_r3ng5q", blurb: "I'm going to take over Supreme and then build it to become the best sorta vintage sorta hipster mad hypebeast clothing company", story: "<p>I will dominate the world with my mad nice clothing</p>", category: "Design & Tech", goal: 100000000, pledged_amount: 0, public: true, creator_id: User.third.id},
@@ -22,14 +32,4 @@ Project.create!([
   {title: "Poetry in Motion", img_url: "sandrachile-483700-unsplash_fa2dmx", blurb: "The wonders of a poem", story: "<p>The great French poet Ernie Hedgingcourse is creating a Kickstarter project for a new translation of his book! If we reach our goal, we can pay for the license and release it worldwide (except for France).</p>", category: "Publishing", goal: 1100, pledged_amount: 0, public: true, creator_id: User.fourth.id},
   {title: "Fundsy Demo", img_url: "beata-ratuszniak-5429-unsplash_zgkjth", blurb: "A workshop by famous street artist Fundsy", story: "<p>Fundsy is coming to a city near you! Our immediate goal is to fund a nationwide tour where he can teach and demonstrate his process - if we meet our stretch goals, you may even decide any cities/dates to add to his tour!</p>", category: "Arts", goal: 10000, pledged_amount: 0, public: true, creator_id: User.fifth.id},
   {title: "Halfway in Love (Second Print Run!)", img_url: "jean-philippe-delberghe-324898-unsplash_fggscn", blurb: "A love story between the last remaining human on Earth and a zombie who protects her", story: "<p>Jean Phillipe is reprinting his 2009 masterpiece, Halfway in Love. Supporters can own their very own sealed copy, with the back cover signed by Jean. The new version features an extra foreword and never-before-seen sketches from his design process.</p>", category: "Comics & Illustration", goal: 9001, pledged_amount: 0, public: true, creator_id: User.last.id}
-])
-
-User.create!([
-  {username: "user", password_digest: "$2a$10$061HWAnCEm00ZU7748KqZO3WRdS5LFY.nxh0PiwPkRI8JLh9cv9x.", session_token: "Mvw8TIH6A29q5gZ2J9JdKw"},
-  {username: "DarrenBuffet", password_digest: "$2a$10$gzF1H9dN7LxhGpBbcNKIfOlIH3A11M2AdDE7knFQGTsdBSs9FH4GW", session_token: "P6b68EHjYvZAqerv-N71Wg"},
-  {username: "brendan", password_digest: "$2a$10$YA3/vP882DlEBp9n/H1ycOJlIGpEIbRl8N33XegMwiCWwuAUU9Nsq", session_token: "IaZCf2pC5vvGCuXMe9xK2w"},
-  {username: "BobGates", password_digest: "$2a$10$2qE5.1UTKZm6oG5535qmD.R94.wd/KJIZkZ7J.3/7KiGEYEQWMJd6", session_token: "8vUBS-_zCvHszrAnarGWWw"},
-  {username: "TommyFiddle", password_digest: "$2a$10$MP2DiSFSsgiDjWEDVPowhOn.z3oMu111TWgzgVF3dsICkpuyT4yt.", session_token: "f0K6yRvxqgnYZ4oAGdlZkw"},
-  {username: "StanJobs", password_digest: "$2a$10$8nreGFXDaSRN32ElTKsQyu1vrIGTqyNt.0FnZJe.oa53R6gizBAW.", session_token: "euhLG6vkpYn-suuYJPlB1w"},
-  {username: "DaWoz", password_digest: "$2a$10$X9Na8UpHDAo9TRVa2G6jUet8EXp0I715HolYVjJrDxFWusi0nQVCa", session_token: "ndG3VUGpPdoh-SknCrQuOQ"},
 ])
