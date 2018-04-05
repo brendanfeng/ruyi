@@ -23,7 +23,7 @@ class ProjectsCategoryIndex extends React.Component {
   }
 
   goToShow(id) {
-    this.props.history.push(`projects/show/${id}`);
+    this.props.history.push(`/projects/show/${id}`);
   }
 
   render () {

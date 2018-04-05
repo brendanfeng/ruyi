@@ -6,7 +6,6 @@ export const RECEIVE_PROJECT_ERRORS = 'RECEIVE_PROJECT_ERRORS';
 export const RECEIVE_INDEX = 'RECEIVE_INDEX';
 
 export const receiveIndex = (payload) => {
-  console.log(payload)
 return {
   type: RECEIVE_INDEX,
   projects: payload.projects,

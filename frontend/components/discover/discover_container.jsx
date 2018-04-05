@@ -7,8 +7,9 @@ import { searchIndex } from '../../actions/project_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    projects: Object.values(state.entities.projects),
+    projects: state.entities.projects,
     creators: state.entities.users,
+    results: state.ui.search,
     query: ownProps.location.search.slice(1),
     category: ownProps.match.params.category,
   };
