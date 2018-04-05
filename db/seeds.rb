@@ -27,7 +27,7 @@ Project.create!([
 User.create!([
   {username: "user", password_digest: "$2a$10$061HWAnCEm00ZU7748KqZO3WRdS5LFY.nxh0PiwPkRI8JLh9cv9x.", session_token: "Mvw8TIH6A29q5gZ2J9JdKw"},
   {username: "DarrenBuffet", password_digest: "$2a$10$gzF1H9dN7LxhGpBbcNKIfOlIH3A11M2AdDE7knFQGTsdBSs9FH4GW", session_token: "P6b68EHjYvZAqerv-N71Wg"},
-  {username: "brendan", password_digest: "$2a$10$YA3/vP882DlEBp9n/H1ycOJlIGpEIbRl8N33XegMwiCWwuAUU9Nsq", session_token: "IaZCf2pC5vvGCuXMe9xK2w"}
+  {username: "brendan", password_digest: "$2a$10$YA3/vP882DlEBp9n/H1ycOJlIGpEIbRl8N33XegMwiCWwuAUU9Nsq", session_token: "IaZCf2pC5vvGCuXMe9xK2w"},
   {username: "BobGates", password_digest: "$2a$10$2qE5.1UTKZm6oG5535qmD.R94.wd/KJIZkZ7J.3/7KiGEYEQWMJd6", session_token: "8vUBS-_zCvHszrAnarGWWw"},
   {username: "TommyFiddle", password_digest: "$2a$10$MP2DiSFSsgiDjWEDVPowhOn.z3oMu111TWgzgVF3dsICkpuyT4yt.", session_token: "f0K6yRvxqgnYZ4oAGdlZkw"},
   {username: "StanJobs", password_digest: "$2a$10$8nreGFXDaSRN32ElTKsQyu1vrIGTqyNt.0FnZJe.oa53R6gizBAW.", session_token: "euhLG6vkpYn-suuYJPlB1w"},
