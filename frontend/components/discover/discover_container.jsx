@@ -4,6 +4,7 @@ import React from 'react';
 
 import Discover from './discover';
 import { searchIndex } from '../../actions/project_actions';
+import { clearSearch } from '../../actions/ui_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -17,7 +18,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    searchIndex: (query) => dispatch(searchIndex(query))
+    searchIndex: (query) => dispatch(searchIndex(query)),
+    clearSearch: () => dispatch(clearSearch),
   };
 };
 

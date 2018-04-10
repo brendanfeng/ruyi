@@ -1,5 +1,5 @@
 import React from 'react';
-import {isEmpty} from 'lodash'
+import {isEmpty} from 'lodash';
 
 import DiscoverItem from './discover_item';
 
@@ -16,7 +16,7 @@ export default class Discover extends React.Component {
 
   componentDidMount() {
     this.props.searchIndex({
-      query: this.state.query, category: this.state.category
+      query: this.props.query, category: this.props.category
     });
   }
 
@@ -54,11 +54,11 @@ export default class Discover extends React.Component {
               <input type="text"
                 className="discover-search-bar"
                 onChange={this.update('query')}
-                value={this.state.query}
+                value={this.props.query}
               />
               <span> in </span>
               <select className="discover-category-list"
-                value={this.state.category}
+                value={this.props.category}
                 onChange={this.update('category')}>
                 <option value="all">All Categories</option>
                 <option value="Design & Tech">Design & Tech</option>
@@ -93,5 +93,9 @@ export default class Discover extends React.Component {
         </div>
       );
     }
+  }
+
+  componentWillUnmount() {
+    this.props.clearSearch();
   }
 }

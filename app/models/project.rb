@@ -5,7 +5,10 @@ class Project < ApplicationRecord
   using: {tsearch: {prefix: true}, trigram: {threshold: 0.5}},
   ranked_by: ":trigram"
 
-  CATEGORIES = ["Comics & Illustration", "Film", "Games", "Food & Craft", "Arts", "Design & Tech", "Publishing", "Music"]
+  CATEGORIES = [
+    "Comics & Illustration", "Film", "Games", "Food & Craft",
+     "Arts", "Design & Tech", "Publishing", "Music"
+  ]
 
   validates :story, presence: true
   validates :blurb, presence: true, length: { maximum: 130 }
