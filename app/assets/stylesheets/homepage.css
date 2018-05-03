@@ -63,6 +63,7 @@
 }
 
 .category-tags-nav {
+  background-color: white;
   display: flex;
   flex-flow: row nowrap;
   margin-top: 4rem;
@@ -75,6 +76,7 @@
 }
 
 .active-tab {
+  background-color: white;
   color: #282828;
   border-bottom: 2px solid #282828;
   margin-left: 20px;

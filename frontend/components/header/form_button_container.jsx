@@ -6,7 +6,7 @@ import FormButton from './form_button';
 
 const mapStateToProps = state => {
   return {
-    loggedIn: Boolean(state.session.currentUser)
+    currentUser: state.session.currentUser
   };
 };
 

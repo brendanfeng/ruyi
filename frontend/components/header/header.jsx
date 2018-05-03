@@ -19,10 +19,10 @@ export default class Header extends React.Component {
           <Image publicId="imageedit_2_8651322983" ></Image>
         </Link>
         <nav className="nav-right-container">
-          <span className="search-bar">
+          <Link className="search-bar" to="/discover/all/">
             Search
             <i className="material-icons">search</i>
-          </span>
+          </Link>
           <FormButtonContainer />
         </nav>
       </header>
