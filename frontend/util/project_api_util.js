@@ -42,11 +42,3 @@ export const searchIndex = ({query, category}) => {
     data: {query, category}
   });
 };
-
-export const searchLimited = query => {
-  return $.ajax({
-    method: "GET",
-    url: `/api/searchlimited`,
-    data: {query}
-  });
-};

@@ -5,11 +5,11 @@ import DiscoverItem from './discover_item';
 export default class Discover extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      query: props.query,
-      category: props.category
-    };
-    this.update = this.update.bind(this);
+    // this.state = {
+    //   query: props.query,
+    //   category: props.category
+    // };
+    // this.update = this.update.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
   }
 
@@ -17,17 +17,17 @@ export default class Discover extends React.Component {
     this.props.searchIndex({query: this.props.query, category: this.props.category});
   }
 
-  update(field) {
-    return e => {
-      e.preventDefault();
-      this.setState({[field]: e.currentTarget.value});
-    };
-  }
+  // update(field) {
+  //   return e => {
+  //     e.preventDefault();
+  //     this.setState({[field]: e.currentTarget.value});
+  //   };
+  // }
 
   handleSearch(e) {
     e.preventDefault();
-    this.props.history.push(`/discover/${this.state.category}?${this.state.query}`);
-    this.props.searchIndex({query: this.state.query, category: this.state.category});
+    this.props.history.push(`/discover/${this.category.value}?${this.query.value}`);
+    this.props.searchIndex({query: this.query.value, category: this.category.value});
   }
 
   render() {
@@ -48,13 +48,10 @@ export default class Discover extends React.Component {
       return (<div className="discover-container">
         <div className="discover-header">
           <div className="discover-search">
-            <span>Search for
-            </span>
-            <input type="text" className="discover-search-bar" onChange={this.update('query')} value={this.state.query}/>
-            <span>
-              in
-            </span>
-            <select className="discover-category-list" value={this.state.category} onChange={this.update('category')}>
+            <span>{"Search for "}</span>
+            <input type="text" className="discover-search-bar" defaultValue={this.props.query} ref={(query) => this.query = query}/>
+            <span>{" in "}</span>
+            <select className="discover-category-list" defaultValue={this.props.category} ref={(category) => this.category = category}>
               <option value="all">All Categories</option>
               <option value="Design & Tech">Design & Tech</option>
               <option value="Arts">Arts</option>
@@ -71,8 +68,9 @@ export default class Discover extends React.Component {
           </div>
         </div>
         <div className="discover-projects-container">
-          <span className="discover-count">Discover {this.props.results.length}
-            projects</span>
+          <span className="discover-count">
+            {`Discover ${this.props.results.length} projects`}
+          </span>
           <div className="discover-projects-list">
             {
               this.props.results.map((projId) => {

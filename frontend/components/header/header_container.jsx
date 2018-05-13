@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import React from 'react';
 
-import {setSearchBar} from '../../actions/ui_actions';
+import {setSearchBar, searchLimited} from '../../actions/ui_actions';
 import Header from './header';
 
 const mapStateToProps = state => {
@@ -10,7 +10,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setSearchBar: (searchBar) => dispatch(setSearchBar(searchBar))
+    setSearchBar: (searchBar) => dispatch(setSearchBar(searchBar)),
+    searchLimited: (query) => dispatch(searchLimited(query))
   };
 };
 

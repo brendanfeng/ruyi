@@ -5,10 +5,18 @@ import {Image} from 'cloudinary-react';
 import FormButtonContainer from './form_button_container';
 import SearchBar from './search_bar';
 
-const Header = ({searchBar, setSearchBar, searchResults}) => {
+const renderSearchBar = (setSearchBar) => {
+  // onClick={() => setSearchBar([])}
+  return (<Link className="search-bar" to="/discover/all">
+    Search
+    <i className="material-icons">search</i>
+  </Link>);
+};
+
+const Header = ({searchBar, setSearchBar, searchLimited}) => {
   return (
     searchBar
-    ? <SearchBar setSearchBar={setSearchBar} searchResults={searchBar}/>
+    ? <SearchBar setSearchBar={setSearchBar} searchResults={searchBar} searchLimited={searchLimited}/>
     : (<header className="nav-container">
       <nav className="nav-left-container">
         <Link className="header-link" to="/discover/all/">Discover</Link>
@@ -18,10 +26,7 @@ const Header = ({searchBar, setSearchBar, searchResults}) => {
         <Image publicId="imageedit_2_8651322983"></Image>
       </Link>
       <nav className="nav-right-container">
-        <span className="search-bar" onClick={() => setSearchBar([])}>
-          Search
-          <i className="material-icons">search</i>
-        </span>
+        {renderSearchBar(setSearchBar)}
         <FormButtonContainer/>
       </nav>
     </header>));

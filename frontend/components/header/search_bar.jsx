@@ -11,9 +11,9 @@ export default class SearchBar extends React.Component {
 
   handleSearch(e) {
     this.setState({search: e.currentTarget.value});
-    // if (e.currentTarget.value >= 3) {
-    //   this.props.
-    // }
+    if (e.currentTarget.value.length >= 3) {
+      this.props.searchLimited(this.state.search);
+    }
   }
 
   renderSearchResults() {
