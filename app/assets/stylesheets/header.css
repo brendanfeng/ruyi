@@ -69,3 +69,29 @@
   outline-offset: 2px;
   outline: 1px solid #009e74;
 }
+
+.search-header {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 30px;
+  padding: 5px 30px 5px 30px;
+  border: none;
+  box-shadow: 0 4px 8px 0 #dcdeed
+}
+
+.search-header:focus {
+  outline: none;
+}
+
+.close {
+  position: absolute;
+  top: 21px;
+  right: 5px;
+  z-index: 100;
+}
+
+.close:hover {
+  cursor: pointer;
+  color: #009e74;
+}

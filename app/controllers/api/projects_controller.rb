@@ -1,6 +1,6 @@
 class Api::ProjectsController < ApplicationController
-  before_action :ensure_logged_in, only:[:create, :update, :destroy]
-  before_action :validate_credentials, only:[:update, :destroy]
+  before_action :ensure_logged_in, only: %i[create update destroy]
+  before_action :validate_credentials, only: %i[update destroy]
 
   def index
     @projects = Project.all
@@ -49,35 +49,38 @@ class Api::ProjectsController < ApplicationController
   end
 
   def fetch_header
-    @public_count = Project.where("public = true").count
+    @public_count = Project.where('public = true').count
     @users_count = User.count
-    @funded_count = Project.where("pledged_amount >= goal").count
+    @funded_count = Project.where('pledged_amount >= goal').count
     render :header
   end
 
   def search_projects
-    cat, q = params[:category], params[:query]
-    if cat == "all" && q == ""
-      @projects = Project.all
-    elsif cat == "all"
-      @projects = Project.search_projects(q)
-      .where(public: true)
-    elsif q == ""
-      @projects = Project.where(category: cat)
-      .where(public: true)
-    else
-      @projects = Project.search_projects(q)
-      .where(public: true)
-      .where(category: cat)
-    end
+    cat = params[:category]
+    q = params[:query]
+    @projects = if cat == 'all' && q == ''
+                  Project.all
+                elsif cat == 'all'
+                  Project.search_projects(q)
+                         .where(public: true)
+                elsif q == ''
+                  Project.where(category: cat)
+                         .where(public: true)
+                else
+                  Project.search_projects(q)
+                         .where(public: true)
+                         .where(category: cat)
+                end
     creators = @projects.pluck(:creator_id)
     @users = User.where('id IN (?)', creators)
     render :index
   end
 
   def limited_search_projects
-    @projects = Project.search_projects(params[:query]).where(public: true).limit(4)
-    render :index
+    @projects = Project.search_projects(params[:query]).where(public: true).limit(5)
+    creators = @projects.pluck(:creator_id)
+    @users = User.where('id IN (?)', creators)
+    render :bar
   end
 
   private
@@ -91,7 +94,7 @@ class Api::ProjectsController < ApplicationController
   def validate_credentials
     @project = Project.find(params[:id])
     unless @project.creator_id == current_user.id
-      render json: ["Unauthorized request"], status: 401
+      render json: ['Unauthorized request'], status: 401
       @already_rendered = true
     end
   end
