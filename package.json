@@ -34,7 +34,7 @@
     "webpack": "webpack --watch",
     "postinstall": "webpack",
     "start": "react-scripts start",
-    "build": "npm install && react-scripts build"
+    "build": "react-scripts build"
   },
   "repository": {
     "type": "git",
