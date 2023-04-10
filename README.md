@@ -1,10 +1,10 @@
 # RuYi - As You Desire
 
 RuYi is a clone of Kickstarter, a crowdfunding website where users can create projects and support projects
-that they want to see made. RuYi is made using Ruby on Rails on the backend with a Postgres database,
+that they want to see made. RuYi is made using Ruby on Rails on the backend with a PostgreSQL database,
 and a React/Redux frontend with jQuery handling AJAX requests.
 
-[Live Site Here](http://ruyi.brendanfeng.me)
+[Live Site Here](https://ruyi.up.railway.app)
 
 ## Features
 
@@ -70,5 +70,3 @@ end
 ```
 
 On the frontend, RuYi makes minimal AJAX calls when it is predictive searching. The search bar only fires off requests when the query is longer than two characters, and comes back with a limited number of results. If the user is looking for more results, they can then navigate to the discover page, where a full paginated results list is rendered.
-
-![](app/...INSERT GIF OF SEARCH BAR HERE)
